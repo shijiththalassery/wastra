@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>wastra_dashboard</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="/adminU/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/adminU/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/adminU/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="/adminU/css/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/handlebars/dist/handlebars.min.js"></script>
+    <style>
+        .ediDoc {
+            display: flex;
+            /* padding-left: 11px; */
+            text-align: center;
+        }
+
+        .downloadPdf {
+            margin-right: 2px;
+        }
+
+        table {
+            font-size: 14px;
+        }
+
+        th {
+            font-weight: bold;
+            text-align: left;
+        }
+
+        /* Add background color and hover effects to table rows and cells */
+        tr {
+            background-color: #f5f5f5;
+        }
+
+        tr:hover {
+            background-color: #e0e0e0;
+        }
+
+        th,
+        td {
+            padding: 10px;
+        }
+
+        /* Adjust width and height of table elements */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            width: auto;
+        }
+
+        td {
+            height: 50px;
+        }
+
+        /* Add margin and padding to table cells and rows */
+        table {
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+        }
+
+        /* CSS media queries */
+        @media only screen and (max-width: 767px) {
+            .d-flex.flex-column.flex-md-row {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .align-self-center {
+                text-align: center;
+                margin: 10px 0;
+            }
+
+            .btn-group.contact {
+                margin-bottom: 0;
+            }
+
+            .btn-group.contact .btn-primary {
+                width: 100px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner"
+            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-light navbar-light">
+                <a href="index.html" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary"></i>Administrator</h3>
+                </a>
+
+                <div class="navbar-nav w-100">
+                    <a href="/admin/admin_dashboard" class="nav-item nav-link active"></i>Home</a>
+                    <a href="/admin/users" class="nav-item nav-link active"></i>User</a>
+                    <a href="/admin/orders" class="nav-item nav-link active"></i>Order</a>
+                    <a href="/admin/products" class="nav-item nav-link active"></i>Product</a>
+                    <a href="/admin/catagories" class="nav-item nav-link active"></i>Category</a>
+                    <a href="/admin/coupon" class="nav-item nav-link active"></i>Coupon</a>
+                    <a href="/admin/banner" class="nav-item nav-link active"></i>Banner</a>
+                </div>
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                    <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
+                </a>
+                <a href="#" class="sidebar-toggler flex-shrink-0">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <form class="d-none d-md-flex ms-4">
+                    <input class="form-control border-0" type="search" placeholder="Search">
+                </form>
+                <div class="navbar-nav align-items-center ms-auto">
+                    {{!-- download pdf section start --}}
+                    
+                    {{!-- download pdf section end --}}
+
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle me-lg-2" src="adminU/img/user.jpg" alt=""
+                                style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex">Admin</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">My Profile</a>
+                            <a href="#" class="dropdown-item">Settings</a>
+                            <a href="/admin/" class="dropdown-item">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            {{!-- admin dashboard main start --}}
+            <div class="container mt-5 table-responsive">
+                <form class="d-flex flex-column flex-md-row" action="/orderSearch" style="max-width:35em; height:auto;"
+                    method="post">
+
+                    <input name="fromdate" style="margin-left: 10px;border: 1px solid black; max-width:10em ;"
+                        type="date" id="form3Examplea2" class="form-control me-2" required />
+                    <h6 style="margin-left: 10px;" class="align-self-center">to</h6>
+
+                    <input name="todate" style="margin-left: 10px;border: 1px solid black; max-width:10em;" type="date"
+                        id="form3Examplea2" class="form-control ms-2 me-3" required />
+
+                    <a style="margin-left: 10px;" class="btn btn-outline-primary" onclick="getorders()">Get Orders</a>
+                </form>
+
+
+
+                <div style="display: flex; flex-direction: row-reverse;">
+                    <div class="btn-group contact mb-3 gap-2">
+
+                        <div><button class="btn btn-primary " onclick="getpdf()">Print PDF</button></div>
+                        {{!-- <div><button style="margin-left: 10px;" class="btn btn-primary "
+                                onclick="window.location.href='/admin/excelDownload'">Excel</button></div> --}}
+                    </div>
+                </div>
+
+
+                <div class="table-wrap" id="tablePrint">
+
+                    <table id="myTable" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Status</th>
+                                <th>Payment mode</th>
+                                <th>Order Date</th>
+                                <th>OrderBill</th>
+
+                            </tr>
+                        </thead>
+                        <tbody class="rowClassParent">
+                            {{#if orders}}
+
+                            {{#each orders}}
+
+                            <tr class="rowClass">
+                                <td>{{this._id}} </td>
+                                <td style="max-width: 200px">{{this.status}} </td>
+                                <td>{{this.paymentMethod}} </td>
+                                <td>{{formatDate this.date}}</td>
+                                <td style="font-weight: 700;">₹ {{this.total}} </td>
+
+                            </tr>
+
+
+                            {{/each}}
+
+                        </tbody>
+                        {{else}}
+                        <h1>No orders</h1>
+                        {{/if}}
+                    </table>
+                </div>
+
+            </div>
+            {{!-- admin dashboard main end --}}
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script src="/javascripts/chart.js"></script>
+
+        </div>
+
+    </div>
+
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- /////////////////////////////PDF MAKING ///////////////////////////////// -->
+
+    <div style="text-align: center;">Total: <span id="total"></span></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha384-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+        crossorigin="anonymous"></script>
+
+    <script src="/js/report.js"></script>
+    <script>
+
+
+        const rowClass = document.querySelectorAll('.rowClass')
+        const rowClassParent = document.querySelector('.rowClassParent')
+
+        async function getorders() {
+
+            let fromDate = $('input[name="fromdate"]').val();
+            let toDate = $('input[name="todate"]').val();
+            const rows = document.getElementById('rows')
+
+            console.log(fromDate)
+            console.log(toDate)
+
+
+            const response = await fetch('/admin/getOrders', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    fromDate: fromDate,
+                    toDate: toDate
+                }),
+
+            });
+            rowClass.forEach(row => {
+                row.innerHTML = ''
+            })
+            const data = await response.json()
+            console.log('vannadataaaaaaaaaaaaaaaaaaaaaa')
+            console.log(data)
+
+            console.log('before extract data.orderDAta')
+            const orderdata = data.orderdata
+            console.log('here im now')
+            console.log(orderdata)
+            let total = 0;
+            orderdata.forEach((order) => {
+                const date = new Date(order.date);
+                const formattedDate = new Intl.DateTimeFormat('en-IN', {
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric',
+                    hour: 'numeric',
+                    minute: 'numeric',
+                    hour12: true
+                }).format(date);
+
+                total += order.total;
+                const totalElement = document.getElementById('total');
+                totalElement.textContent = `₹${total}`;
+
+                rowClassParent.innerHTML +=
+                    ` <tr>
+                      <td>${order._id} </td>
+                      <td style="max-width: 200px">${order.status} </td>
+                      <td>${order.paymentMethod} </td>
+                      <td>${formattedDate}</td>
+                      <td style="font-weight: 700;">₹ ${order.total} </td>
+                  </tr>`
+            })
+        }
+
+
+        //PDF PRINT
+        async function getpdf() {
+            window.print()
+        }
+
+
+    </script>
+    {{!-- ////////////////////////PDF MAKING END /////////////////////////////// --}}
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/adminU/lib/chart/chart.min.js"></script>
+    <script src="/adminU/lib/easing/easing.min.js"></script>
+    <script src="/adminU/lib/waypoints/waypoints.min.js"></script>
+    <script src="/adminU/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/adminU/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="/adminU/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="/adminU/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/adminU/js/main.js"></script>
+
+
+</body>
+
+</html>

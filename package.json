@@ -1,0 +1,47 @@
+{
+  "name": "wastra",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "alertifyjs": "^1.13.1",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "chalk": "^5.2.0",
+    "cloudinary": "^1.37.2",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.0.7",
+    "express-session": "^1.17.3",
+    "handlebar": "^1.0.0",
+    "hbs": "^4.2.0",
+    "html-pdf": "^3.0.1",
+    "jspdf": "^2.5.1",
+    "moment": "^2.29.4",
+    "mongodb": "^5.3.0",
+    "mongoose": "^7.1.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "nocache": "^3.0.4",
+    "nodemailer": "^6.9.1",
+    "nodemon": "^2.0.22",
+    "pdfkit": "^0.13.0",
+    "puppeteer": "^20.5.0",
+    "razorpay": "^2.8.6",
+    "sharp": "^0.32.1",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.5",
+    "@babel/preset-env": "^7.22.5"
+  }
+}

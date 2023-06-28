@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Invoice</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    .invoice {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    
+    .invoice-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .invoice-header h1 {
+      font-size: 24px;
+      color: #333;
+      margin: 0;
+    }
+    
+    .invoice-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    
+    .invoice-info div {
+      width: 50%;
+    }
+    
+    .invoice-info p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #333;
+    }
+    
+    .invoice-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    .invoice-table th,
+    .invoice-table td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    
+    .invoice-table th {
+      background-color: #f9f9f9;
+    }
+    
+    .invoice-total {
+      text-align: right;
+    }
+    
+    .invoice-total p {
+      font-size: 16px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="invoice">
+    <div class="invoice-header">
+      <h1>Invoice</h1>
+      <h1>wastra</h1>             orderData,userDatas,invoiceDate, address
+
+    </div>
+
+    <div class="invoice-info">
+      <div>
+        <p>Ordered Date :&nbsp;&nbsp;<strong>{{orderData.date}}</strong></p>
+        <p>Orderd ID :&nbsp;&nbsp;<strong>{{orderData.orderId}}</strong></p>
+        <p>Payment Method :&nbsp;&nbsp;<strong>{{orderData.paymentMethod}}</strong></p>
+        <p>Delivered Date :&nbsp;&nbsp;<strong>{{orderData.deliveredDate}}</strong></p>
+        
+      </div>
+      <div>
+        <p>To:</p>
+        <p>Customer Name :&nbsp;&nbsp;<strong>{{userDatas.name}}</strong></p>
+        <p>Customer Address :&nbsp;&nbsp;<strong>{{address.addressLine}}</strong></p>
+        <p>Customer City, State, ZIP :&nbsp;&nbsp;<strong>{{address.city}} , {{address.state}} , {{address.pincode}}</strong></p>
+        <p>Customer Email :&nbsp;&nbsp;<strong>{{userDatas.email}}</strong></p>
+        <p>Customer Phone :&nbsp;&nbsp;<strong>{{address.mobile}}</strong></p>
+      </div>
+    </div>
+
+    <table class="invoice-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each orderData.product }}
+        <tr>
+          <td>{{this.name}}</td>
+          <td>{{this.quantity}} </td>
+          <td>{{this.price}} </td>
+          <td>{{mul this.quantity this.price}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <div class="invoice-total">
+      <p style="padding-right: 107px;"><strong>Total:{{orderData.totalAmount}} </strong></p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<!-- belle/product-pre-orders.html   11 Nov 2019 12:44:03 GMT -->
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title> &ndash; wastra</title>
+  <meta name="description" content="description">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="user_product_view/assets/images/favicon.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.7/dist/sweetalert2.min.css">
+
+  <!-- Plugins CSS -->
+  <link rel="stylesheet" href="user_product_view/assets/css/plugins.css">
+  <!-- Bootstap CSS -->
+  <link rel="stylesheet" href="user_product_view/assets/css/bootstrap.min.css">
+  <!-- Main Style CSS -->
+  <link rel="stylesheet" href="user_product_view/assets/css/style.css">
+  <link rel="stylesheet" href="user_product_view/assets/css/responsive.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" rel="stylesheet">
+  <style>
+    /* Define the animation */
+    @keyframes myAnimation {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Add a CSS class to apply the animation */
+    .animate-link {
+      animation: myAnimation 0.5s;
+    }
+
+ .zoom-container {
+  width: 400px; /* Adjust the width and height to your desired zoom level */
+  height: 600px;
+  overflow: hidden;
+  position: relative;
+}
+
+.zoom-container img {
+  width: 100%; /* Ensure the image fills the container */
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.zoom-container:hover img {
+  transform: scale(1.2); /* Increase the scale value to zoom in further */
+}
+.zoom-container {
+  width: 350px; /* Adjust the width and height to your desired zoom level */
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+}
+
+.zoom-container img {
+  width: 100%; /* Ensure the image fills the container */
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.zoom-container:hover img {
+  transform: scale(2.0); /* Increase the scale value to zoom in further */
+}
+
+
+  </style>
+</head>
+
+<body class="template-product template-product-right-thumb belle">
+  <div class="pageWrapper">
+    <!--Search Form Drawer-->
+    <div class="search">
+      <div class="search__form">
+        <form class="search-bar__form" action="#">
+          <button class="go-btn search__button" type="submit"><i class="icon anm anm-search-l"></i></button>
+          <input class="search__input" type="search" name="q" value="" placeholder="Search entire store..."
+            aria-label="Search" autocomplete="off">
+        </form>
+        <button type="button" class="search-trigger close-btn"><i class="icon anm anm-times-l"></i></button>
+      </div>
+    </div>
+    <!--End Search Form Drawer-->
+    <!--Top Header-->
+  </div>
+  <!--End Top Header-->
+  <!--Header-->
+  <div class="header-wrap animated d-flex">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <!--Desktop Logo-->
+        <div class="logo col-md-2 col-lg-2 d-none d-lg-block">
+          <a href="index.html">
+            <img src="user_product_view/assets/images/logo.svg" alt="Belle Multipurpose Html Template"
+              title="Belle Multipurpose Html Template" />
+          </a>
+        </div>
+        <!--End Desktop Logo-->
+        <div class="col-2 col-sm-3 col-md-3 col-lg-8">
+          <div class="d-block d-lg-none">
+            <button type="button" class="btn--link site-header__menu js-mobile-nav-toggle mobile-nav--open">
+              <i class="icon anm anm-times-l"></i>
+              <i class="anm anm-bars-r"></i>
+            </button>
+          </div>
+          <!--Desktop Menu-->
+          <nav class="grid__item" id="AccessibleNav"><!-- for mobile -->
+            <ul id="siteNav" class="site-nav medium center hidearrow">
+              <li class="lvl1 parent megamenu"><a href="/">Home <i class="anm anm-angle-down-l"></i></a></li>
+              <li class="lvl1 parent megamenu"><a href="#">Shop <i class="anm anm-angle-down-l"></i></a></li>
+              <li class="lvl1 parent megamenu"><a href="#">Contact Us<i class="anm anm-angle-down-l"></i></a></li>
+              <li class="lvl1 parent dropdown"><a href="#"><i class="far fa-user-circle"></i> Account
+                </a>
+                <ul class="dropdown">
+                  {{#if user}}
+                  <li>
+                    <a href="/logout" class="site-nav">
+                      <i class="fas fa-sign-in-alt fa-rotate-180"></i>
+                      Log out
+                    </a>
+                  </li>
+                  {{else}}
+                  <li><a href="/login" class="site-nav"><i class="fas fa-sign-in-alt"></i> Log in</a>
+                  </li>
+                  {{/if}}
+
+
+              </li>
+              <li><a href="/user_profile" class="site-nav"><i class="fa fa-user"
+                    aria-hidden="true"></i>&nbsp;Profile</a></li>
+              <li><a href="/cart?id={{userData._id}}" class="site-nav"><i class="fas fa-shopping-cart"></i>
+                  Cart</a>
+              </li>
+              <li><a href="/wishlist" class="site-nav"><i class="fas fa-heart"></i>
+                  Wishlists</a></li>
+              <ul class="dropdown">
+              </ul>
+              </li>
+
+            </ul>
+          </nav>
+          <!--End Desktop Menu-->
+        </div>
+        <div class="col-6 col-sm-6 col-md-6 col-lg-2 d-block d-lg-none mobile-logo">
+          <div class="logo">
+            <a href="index.html">
+              <img src="user_product_view/assets/images/logo.svg" alt="Belle Multipurpose Html Template"
+                title="Belle Multipurpose Html Template" />
+            </a>
+          </div>
+        </div>
+        <div class="col-4 col-sm-3 col-md-3 col-lg-2">
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End Header-->
+  <!--Mobile Menu-->
+ <div class="mobile-nav-wrapper" role="navigation">
+            <div class="closemobileMenu"><i class="icon anm anm-times-l pull-right"></i> Wastra Menu</div>
+            <ul id="MobileNav" class="mobile-nav">
+                {{#if user}}
+                <li class="lvl1 parent megamenu"><a href="/logout"><i class="fas fa-sign-in-alt fa-rotate-180"></i> Logout</a></li>
+                <li class="lvl1 parent megamenu"><a href="/user_profile"><i class="fa fa-user" aria-hidden="true"></i> profile </a>
+                <li class="lvl1 parent megamenu"><a href="/wishlist"><i class="fas fa-heart"></i> Wish List </a>
+                <li class="lvl1 parent megamenu"><a href="/cart?id={{userData._id}}"><i class="fas fa-shopping-cart"></i> Cart </a>
+                <li class="lvl1 parent megamenu"><a href=""> <i class=" fas fa-thin fa-wallet"></i> wallet : {{userData.wallet}} </a>
+                {{else}}
+                <li class="lvl1 parent megamenu"><a href="/login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                {{/if}}
+                
+            </ul>
+        </div>
+  <!--End Mobile Menu-->
+
+  <!--Body Content-->
+  <div id="page-content">
+    <!--MainContent-->
+    <div id="MainContent" class="main-content" role="main">
+      <!--Breadcrumb-->
+      <div class="bredcrumbWrap">
+        <div class="container breadcrumbs">
+          <a href="index.html" title="Back to the home page">Home</a><span aria-hidden="true">›</span><span>Product
+            Pre-orders New</span>
+        </div>
+      </div>
+      <!--End Breadcrumb-->
+
+      <div id="ProductSection-product-template"
+        class="product-template__container prstyle1 container product-right-sidebar">
+        <!--product-single-->
+        <div class="product-single">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+              <div class="product-details-img">
+                <div class="zoompro-wrap product-zoom-right pl-20">
+                  <div class="zoompro-span zoom-container">
+                    <img class="blur-up lazyload zoompro" data-zoom-image="{{productData.imageUrl.[0].url}}" alt=""
+                      src="{{productData.imageUrl.[0].url}}" />
+                  </div>
+                  {{!-- <div class="product-labels"><span class="lbl on-sale">Sale</span><span
+                      class="lbl pr-label1">new</span></div> --}}
+                  {{!-- <div class="product-buttons">
+                    <a href="https://www.youtube.com/watch?v=93A2jOW5Mog" class="btn popup-video" title="View Video"><i
+                        class="icon anm anm-play-r" aria-hidden="true"></i></a>
+                    <a href="#" class="btn prlightbox" title="Zoom"><i class="icon anm anm-expand-l-arrows"
+                        aria-hidden="true"></i></a>
+                  </div> --}}
+                </div>
+                <div class="lightboximages">
+                  <a href="{{productData.imageUrl.[0].url}}" data-size="1462x2048"></a>
+                  <a href="{{productData.imageUrl.[1].url}}" data-size="1462x2048"></a>
+                  <a href="{{productData.imageUrl.[2].url}}" data-size="1462x2048"></a>
+                  <a href="{{productData.imageUrl.[3].url}}" data-size="1462x2048"></a>
+                  {{!-- <a href="user_product_view/assets/images/product-detail-page/product-with-right-thumbs-5.jpg"
+                    data-size="1462x2048"></a>
+                  <a href="user_product_view/assets/images/product-detail-page/product-with-right-thumbs-6.jpg"
+                    data-size="1462x2048"></a> --}}
+                </div>
+                <div class="product-thumb">
+                  <div id="gallery" class="product-dec-slider-2 product-tab-left">
+                    <a data-image="{{productData.imageUrl.[0].url}}"
+                      data-zoom-image="{{productData.imageUrl.[0].url}}" class="slick-slide slick-cloned"
+                      data-slick-index="-4" aria-hidden="true" tabindex="-1">
+                      <img class="blur-up lazyload" src="{{productData.imageUrl.[0].url}}" alt="" />
+                    </a>
+                    <a data-image="{{productData.imageUrl.[1].url}}"
+                      data-zoom-image="{{productData.imageUrl.[1].url}}" class="slick-slide slick-cloned"
+                      data-slick-index="-3" aria-hidden="true" tabindex="-1">
+                      <img class="blur-up lazyload" src="{{productData.imageUrl.[1].url}}" alt="" />
+                    </a>
+                    <a data-image="{{productData.imageUrl.[2].url}}"
+                      data-zoom-image="{{productData.imageUrl.[2].url}}" class="slick-slide slick-cloned"
+                      data-slick-index="-2" aria-hidden="true" tabindex="-1">
+                      <img class="blur-up lazyload" src="{{productData.imageUrl.[2].url}}" alt="" />
+                    </a>
+                    <a data-image="{{productData.imageUrl.[3].url}}"
+                      data-zoom-image="{{productData.imageUrl.[3].url}}" class="slick-slide slick-cloned"
+                      data-slick-index="-1" aria-hidden="true" tabindex="-1">
+                      <img class="blur-up lazyload" src="{{productData.imageUrl.[3].url}}" alt="" />
+                    </a>
+                    {{!-- <a
+                      data-image="user_product_view/assets/images/product-detail-page/product-with-right-thumbs-5.jpg"
+                      data-zoom-image="user_product_view/assets/images/product-detail-page/product-with-right-thumbs-5.jpg"
+                      class="slick-slide slick-cloned" data-slick-index="0" aria-hidden="true" tabindex="-1">
+                      <img class="blur-up lazyload"
+                        src="user_product_view/assets/images/product-detail-page/product-with-right-thumbs-5.jpg"
+                        alt="" />
+                    </a>
+                    <a data-image="user_product_view/ssets/images/product-detail-page/product-with-right-thumbs-6.jpg"
+                      data-zoom-image="user_product_view/assets/images/product-detail-page/product-with-right-thumbs-6.jpg"
+                      class="slick-slide slick-cloned" data-slick-index="1" aria-hidden="true" tabindex="-1">
+                      <img class="blur-up lazyload"
+                        src="user_product_view/assets/images/product-detail-page/product-with-right-thumbs-6.jpg"
+                        alt="" />
+                    </a> --}}
+                  </div>
+                </div>
+              </div>
+              <div class="product-information">
+                <div class="product-single__meta">
+                  <h1 class="product-single__title" name="productName"><strong>{{productData.name}}</strong></h1>
+                  <div class="product-nav clearfix">
+                    <a href="#" class="next" title="Next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                  </div>
+                  <div class="prInfoRow">
+                    <div class="product-stock"> <span class="instock ">In Stock</span> <span
+                        class="outstock hide">Unavailable</span> </div>
+                    {{!-- <div class="product-sku">SKU: <span class="variant-sku">19115-rdxs</span></div> --}}
+                    <div class="product-review"><a class="reviewLink" href="#tab2"><i class="font-13 fa fa-star"></i><i
+                          class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i
+                          class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><span
+                          class="spr-badge-caption">6 reviews</span></a></div>
+                  </div>
+                  <p class="product-single__price product-single__price-product-template">
+                    <span class="visually-hidden">Regular price</span>
+                    <span class="product-price__price product-price__price-product-template">
+                      <span id="ProductPrice-product-template"><span class="money">₹
+                          {{productData.price}}</span></span>
+                    </span>
+                  </p>
+                  <div class="product-single__description rte">
+                    <p>{{productData.description}}</p>
+                  </div>
+                  <form method="post" action="http://annimexweb.com/cart/add" id="product_form_10508262282"
+                    accept-charset="UTF-8" class="product-form product-form-product-template hidedropdown"
+                    enctype="multipart/form-data">
+                    <div class="swatch clearfix swatch-0 option1" data-option-index="0">
+                      <div class="product-form__item">
+                        {{!-- <label class="header">Color: <span class="slVariant">Red</span></label> --}}
+                        {{!-- <div data-value="Black" class="swatch-element color black available">
+                          <input class="swatchInput" id="swatch-0-black" type="radio" name="option-0"
+                            value="Black"><label class="swatchLbl color small" for="swatch-0-black"
+                            style="background-color:black;" title="Black"></label>
+                        </div> --}}
+                        {{!-- <div data-value="Maroon" class="swatch-element color maroon available">
+                          <input class="swatchInput" id="swatch-0-maroon" type="radio" name="option-0"
+                            value="Maroon"><label class="swatchLbl color small" for="swatch-0-maroon"
+                            style="background-color:maroon;" title="Maroon"></label>
+                        </div> --}}
+                        {{!-- <div data-value="Blue" class="swatch-element color blue available">
+                          <input class="swatchInput" id="swatch-0-blue" type="radio" name="option-0" value="Blue"><label
+                            class="swatchLbl color small" for="swatch-0-blue" style="background-color:blue;"
+                            title="Blue"></label>
+                        </div> --}}
+                        {{!-- <div data-value="Dark Green" class="swatch-element color dark-green available">
+                          <input class="swatchInput" id="swatch-0-dark-green" type="radio" name="option-0"
+                            value="Dark Green"><label class="swatchLbl color small" for="swatch-0-dark-green"
+                            style="background-color:darkgreen;" title="Dark Green"></label>
+                        </div> --}}
+                      </div>
+                    </div>
+                    <div class="swatch clearfix swatch-1 option2" data-option-index="1">
+                      {{!-- <div class="product-form__item">
+                        <label class="header">Size: <span class="slVariant">XS</span></label>
+                        <div data-value="XS" class="swatch-element xs available">
+                          <input class="swatchInput" id="swatch-1-xs" type="radio" name="option-1" value="XS">
+                          <label class="swatchLbl small" for="swatch-1-xs" title="XS">XS</label>
+                        </div>
+                        <div data-value="S" class="swatch-element s available">
+                          <input class="swatchInput" id="swatch-1-s" type="radio" name="option-1" value="S">
+                          <label class="swatchLbl small" for="swatch-1-s" title="S">S</label>
+                        </div>
+                        <div data-value="M" class="swatch-element m available">
+                          <input class="swatchInput" id="swatch-1-m" type="radio" name="option-1" value="M">
+                          <label class="swatchLbl small" for="swatch-1-m" title="M">M</label>
+                        </div>
+                        <div data-value="L" class="swatch-element l available">
+                          <input class="swatchInput" id="swatch-1-l" type="radio" name="option-1" value="L">
+                          <label class="swatchLbl small" for="swatch-1-l" title="L">L</label>
+                        </div>
+                      </div> --}}
+                    </div>
+                    {{!-- <p class="infolinks"><a href="#sizechart" class="sizelink btn"> Size Guide</a> <a
+                        href="#productInquiry" class="emaillink btn"> Ask About this Product</a></p> --}}
+                    <!-- Product Action -->
+                    <div class="product-action clearfix">
+                      <div class="product-form__item--quantity">
+                        <div class="wrapQtyBtn">
+                          {{!--
+                          //////////////////////////////////////////////////quantity/////////////////////////////////////////////////////////////////////
+                          --}}
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+
+
+                          <div class="qtyField">
+                            <a class="qtyBtn minus" onclick="productQuantity('{{productData._id}}', 'dec')">
+                              <i class="fa anm anm-minus-r" aria-hidden="true"></i>
+                            </a>
+                            <input type="text" id="{{productData._id}}" name="quantity" value="1"
+                              class="product-form__input qty">
+                            <a class="qtyBtn plus" onclick="productQuantity('{{productData._id}}', 'inc')">
+                              <i class="fa anm anm-plus-r" aria-hidden="true"></i>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                      {{!--///////////////////////////////////////// cartandbuynow
+                      ////////////////////////////////////////////////////////--}}
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+
+                      <div class="product-form__item--submit d-flex">
+                        {{!-- {{#if productData.stock}}
+                        {{#if userData}}
+                        {{#if productData.isOnCart}} --}}
+                        {{#if userData}}
+                        <button type="button" name="add" id="addToCartBtn" class="btn product-form__cart-submit"
+                          onclick="addToCart('{{productData._id}}')" style="background-color:black;brder-radius:0px;">
+                          <span>
+                            <p style="color:white">Add To Cart</p>
+                          </span>
+                        </button>
+                        {{else}}
+                        <button type="button" name="add" id="addToCartBtn" class="btn product-form__cart-submit"
+                          style="background-color:black;brder-radius:0px;"><a href="/login">
+                            <span>
+                              <p style="color:white">Add To Cart</p>
+                            </span></a>
+                        </button>
+                        {{/if}}
+                        <span class="button-spacing"></span>
+
+                      </div>
+                      {{!--
+                      ///////////////////////////////////////////////////////////////////////////////////////////////////
+                      --}}
+                    </div>
+                    <!-- End Product Action -->
+                  </form>
+                  <div class="display-table shareRow">
+                    <div class="display-table-cell medium-up--one-third">
+
+
+
+                      {{!-- <div class="wishlist-btn">
+                        <a class="wishlist add-to-wishlist" href="#" title="Add to Wishlist"><i
+                            class="icon anm anm-heart-l" aria-hidden="true"></i> <span>Add to Wishlist </span></a>
+                      </div> --}}
+
+
+                      <div class="wishlist-btn">
+
+                        <a class="wishlist add-to-wishlist" href="#" title="Add to Wishlist" id="myLink"
+                          onclick="addToWishlist('{{productData._id}}')">
+                          <i class="icon anm anm-heart-l" aria-hidden="true"></i>
+                          <span>Add to Wishlist</span>
+                        </a>
+                      </div>
+
+                    </div>
+
+                  </div>
+                  <div class="product-info">
+                    <p class="product-type"><span class="lbl">Product Type:</span> <a href="#"
+                        title="Women's">{{productData.category.category}}</a></p>
+                    <p class="product-cat"> <span class="lbl">Collections: </span><a href="#"
+                        title="">{{productData.category.category}}</a> </p>
+
+                  </div>
+                </div>
+              </div>
+              <!--Product Tabs-->
+              <div class="tabs-listing">
+                <ul class="product-tabs">
+                  {{!-- <li rel="tab1"><a class="tablink">Product Details</a></li> --}}
+                  <li rel="tab2"><a class="tablink">Product Reviews</a></li>
+                  <li rel="tab3"><a class="tablink">Size Chart</a></li>
+                  <li rel="tab4"><a class="tablink">Shipping &amp; Returns</a></li>
+                </ul>
+                <div class="tab-container">
+                  {{!-- <div id="tab1" class="tab-content">
+                    <div class="product-description rte">
+                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                        has
+                        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                        galley of type and scrambled it to make a type specimen book. It has survived not only five
+                        centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                      <ul>
+                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                        <li>Sed ut perspiciatis unde omnis iste natus error sit</li>
+                        <li>Neque porro quisquam est qui dolorem ipsum quia dolor</li>
+                        <li>Lorem Ipsum is not simply random text.</li>
+                        <li>Free theme updates</li>
+                      </ul>
+                      <h3>Sed ut perspiciatis unde omnis iste natus error sit voluptatem</h3>
+                      <p>You can change the position of any sections such as slider, banner, products, collection and
+                        so on by just dragging and dropping.&nbsp;</p>
+                      <h3>Lorem Ipsum is not simply random text.</h3>
+                      <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain
+                        was born and I will give you a complete account of the system, and expound the actual
+                        teachings of the great explorer of the truth, the master-builder of human happiness.</p>
+                      <p>Change colors, fonts, banners, megamenus and more. Preview changes are live before saving
+                        them.</p>
+                      <h3>1914 translation by H. Rackham</h3>
+                      <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain
+                        was born and I will give you a complete account of the system, and expound the actual
+                        teachings of the great explorer of the truth, the master-builder of human happiness.</p>
+                      <h3>Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</h3>
+                      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                        voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati
+                        cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est
+                        laborum et dolorum fuga.</p>
+                      <h3>The standard Lorem Ipsum passage, used since the 1500s</h3>
+                      <p>You can use variant style from colors, images or variant images. Also available differnt type
+                        of design styles and size.</p>
+                      <h3>Lorem Ipsum is not simply random text.</h3>
+                      <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain
+                        was born and I will give you a complete account of the system, and expound the actual
+                        teachings of the great explorer of the truth, the master-builder of human happiness.</p>
+                      <h3>Proin ut lacus eget elit molestie posuere.</h3>
+                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                        galley of type and scrambled.</p>
+                    </div>
+                  </div> --}}
+
+                  <div id="tab2" class="tab-content">
+                    <div id="shopify-product-reviews">
+                      <div class="spr-container">
+                        <div class="spr-summary">
+                          <span class="spr-summary-actions">
+                            <a href="#" class="spr-summary-actions-newreview btn">Write a review</a>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="spr-content">
+                        <div class="spr-form clearfix">
+
+                          {{!-- FORM IS STARTING HERE --}}
+                          {{!-- <form onsubmit="handlereview" id="reviewForm" class="new-review-form">
+                            <h3 class="spr-form-title">Write a review</h3>
+                            <fieldset class="spr-form-contact">
+                              <div class="spr-form-contact-name">
+                                <label class="spr-form-label" for="review_author_10508262282">Name</label>
+                                <input class="spr-form-input spr-form-input-text " id="review_author_10508262282"
+                                  type="text" name="reviewAuthor" value="" placeholder="Enter your name">
+                              </div>
+                            </fieldset>
+                            <fieldset class="spr-form-review">
+                              <div class="spr-form-review-body">
+                                <label class="spr-form-label" for="review_body_10508262282">Body of Review <span
+                                    class="spr-form-review-body-charactersremaining">(1500)</span></label>
+                                <div class="spr-form-input">
+                                  <textarea class="spr-form-input spr-form-input-textarea " id="review_body_10508262282"
+                                    data-product-id="10508262282" name="reviewBody" rows="10"
+                                    placeholder="Write your comments here"></textarea>
+                                </div>
+                              </div>
+                            </fieldset>
+                            <fieldset class="spr-form-actions">
+                              <input type="submit">
+                            </fieldset>
+                          </form> --}}
+
+                          <div>
+                            <input type="text" placeholder="enter your name" id="author">
+                            <textarea name="" cols="30" rows="10" placeholder='write the review here'
+                              id="review"></textarea>
+                            <h1 style="display: none;" id="productId11" data-value="{{productData._id}}"></h1>
+                            <button onclick="submitReview()">Submit</button>
+                          </div>
+
+                          {{!-- FORM IS END HERE --}}
+
+
+
+                        </div>
+                        <div class="spr-reviews">
+                          <div class="spr-review">
+                            {{#each productData.reviews}}
+                            <div class="spr-review-header">
+
+                              <h3 class="spr-review-header-title">{{this.name}} </h3>
+                              <span class="spr-review-header-byline"><strong>{{formatDate this.date}}</strong></span>
+                            </div>
+                            <div class="spr-review-content">
+                              <p class="spr-review-content-body">{{this.review}}.</p>
+                            </div>
+                            {{/each}}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+            <!--End Product Tabs-->
+          </div>
+          <!--Product Sidebar-->
+
+          <!--Product Sidebar-->
+        </div>
+      </div>
+      <!--End-product-single-->
+
+
+    </div>
+    <!--#ProductSection-product-template-->
+  </div>
+  <!--MainContent-->
+  </div>
+  <!--End Body Content-->
+
+  <!--Footer-->
+  <footer id="footer">
+    <div class="newsletter-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-7 w-100 d-flex justify-content-start align-items-center">
+            <div class="display-table">
+              <div class="display-table-cell footer-newsletter">
+                <div class="section-header text-center">
+                  <label class="h2"><span>sign up for </span>newsletter</label>
+                </div>
+                <form action="#" method="post">
+                  <div class="input-group">
+                    <input type="email" class="input-group__field newsletter__input" name="EMAIL" value=""
+                      placeholder="Email address" required="">
+                    <span class="input-group__btn">
+                      <button type="submit" class="btn newsletter__submit" name="commit" id="Subscribe"><span
+                          class="newsletter__submit-text--large">Subscribe</span></button>
+                    </span>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-5 d-flex justify-content-end align-items-center">
+            <div class="footer-social">
+              <ul class="list--inline site-footer__social-icons social-icons">
+                <li><a class="social-icons__link" href="#" target="_blank"
+                    title="Belle Multipurpose Bootstrap 4 Template on Facebook"><i class="icon icon-facebook"></i></a>
+                </li>
+                <li><a class="social-icons__link" href="#" target="_blank"
+                    title="Belle Multipurpose Bootstrap 4 Template on Twitter"><i class="icon icon-twitter"></i> <span
+                      class="icon__fallback-text">Twitter</span></a></li>
+                <li><a class="social-icons__link" href="#" target="_blank"
+                    title="Belle Multipurpose Bootstrap 4 Template on Pinterest"><i class="icon icon-pinterest"></i>
+                    <span class="icon__fallback-text">Pinterest</span></a></li>
+                <li><a class="social-icons__link" href="#" target="_blank"
+                    title="Belle Multipurpose Bootstrap 4 Template on Instagram"><i class="icon icon-instagram"></i>
+                    <span class="icon__fallback-text">Instagram</span></a></li>
+                <li><a class="social-icons__link" href="#" target="_blank"
+                    title="Belle Multipurpose Bootstrap 4 Template on Tumblr"><i class="icon icon-tumblr-alt"></i>
+                    <span class="icon__fallback-text">Tumblr</span></a></li>
+                <li><a class="social-icons__link" href="#" target="_blank"
+                    title="Belle Multipurpose Bootstrap 4 Template on YouTube"><i class="icon icon-youtube"></i> <span
+                      class="icon__fallback-text">YouTube</span></a></li>
+                <li><a class="social-icons__link" href="#" target="_blank"
+                    title="Belle Multipurpose Bootstrap 4 Template on Vimeo"><i class="icon icon-vimeo-alt"></i> <span
+                      class="icon__fallback-text">Vimeo</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="site-footer">
+      <div class="container">
+        <!--Footer Links-->
+        <div class="footer-top">
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
+              <h4 class="h4">Quick Shop</h4>
+              <ul>
+                <li><a href="#">Women</a></li>
+                <li><a href="#">Men</a></li>
+                <li><a href="#">Kids</a></li>
+                <li><a href="#">Sportswear</a></li>
+                <li><a href="#">Sale</a></li>
+              </ul>
+            </div>
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
+              <h4 class="h4">Informations</h4>
+              <ul>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Privacy policy</a></li>
+                <li><a href="#">Terms &amp; condition</a></li>
+                <li><a href="#">My Account</a></li>
+              </ul>
+            </div>
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
+              <h4 class="h4">Customer Services</h4>
+              <ul>
+                <li><a href="#">Request Personal Data</a></li>
+                <li><a href="#">FAQ's</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Orders and Returns</a></li>
+                <li><a href="#">Support Center</a></li>
+              </ul>
+            </div>
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 contact-box">
+              <h4 class="h4">Contact Us</h4>
+              <ul class="addressFooter">
+                <li><i class="icon anm anm-map-marker-al"></i>
+                  <p>Gita<br>thalassery,kannur,kerala</p>
+                </li>
+                <li class="phone"><i class="icon anm anm-phone-s"></i>
+                  <p>+91 9544345344</p>
+                </li>
+                <li class="email"><i class="icon anm anm-envelope-l"></i>
+                  <p>shijith.thalassery@gmail.com</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!--End Footer Links-->
+        <hr>
+        <div class="footer-bottom">
+          <div class="row">
+            <!--Footer Copyright-->
+            <div
+              class="col-12 col-sm-12 col-md-6 col-lg-6 order-1 order-md-0 order-lg-0 order-sm-1 copyright text-sm-center text-md-left text-lg-left">
+              <span></span> <a href="templateshub.net">Templates Hub</a>
+            </div>
+            <!--End Footer Copyright-->
+            <!--Footer Payment Icon-->
+            <div
+              class="col-12 col-sm-12 col-md-6 col-lg-6 order-0 order-md-1 order-lg-1 order-sm-0 payment-icons text-right text-md-center">
+              <ul class="payment-icons list--inline">
+                <li><i class="icon fa fa-cc-visa" aria-hidden="true"></i></li>
+                <li><i class="icon fa fa-cc-mastercard" aria-hidden="true"></i></li>
+                <li><i class="icon fa fa-cc-discover" aria-hidden="true"></i></li>
+                <li><i class="icon fa fa-cc-paypal" aria-hidden="true"></i></li>
+                <li><i class="icon fa fa-cc-amex" aria-hidden="true"></i></li>
+                <li><i class="icon fa fa-credit-card" aria-hidden="true"></i></li>
+              </ul>
+            </div>
+            <!--End Footer Payment Icon-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--End Footer-->
+  <!--Scoll Top-->
+  <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
+  <!--End Scoll Top-->
+
+  <div class="hide">
+    <div id="sizechart">
+      <h3>WOMEN'S BODY SIZING CHART</h3>
+      <table>
+        <tbody>
+          <tr>
+            <th>Size</th>
+            <th>XS</th>
+            <th>S</th>
+            <th>M</th>
+            <th>L</th>
+            <th>XL</th>
+          </tr>
+          <tr>
+            <td>Chest</td>
+            <td>31" - 33"</td>
+            <td>33" - 35"</td>
+            <td>35" - 37"</td>
+            <td>37" - 39"</td>
+            <td>39" - 42"</td>
+          </tr>
+          <tr>
+            <td>Waist</td>
+            <td>24" - 26"</td>
+            <td>26" - 28"</td>
+            <td>28" - 30"</td>
+            <td>30" - 32"</td>
+            <td>32" - 35"</td>
+          </tr>
+          <tr>
+            <td>Hip</td>
+            <td>34" - 36"</td>
+            <td>36" - 38"</td>
+            <td>38" - 40"</td>
+            <td>40" - 42"</td>
+            <td>42" - 44"</td>
+          </tr>
+          <tr>
+            <td>Regular inseam</td>
+            <td>30"</td>
+            <td>30½"</td>
+            <td>31"</td>
+            <td>31½"</td>
+            <td>32"</td>
+          </tr>
+          <tr>
+            <td>Long (Tall) Inseam</td>
+            <td>31½"</td>
+            <td>32"</td>
+            <td>32½"</td>
+            <td>33"</td>
+            <td>33½"</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>MEN'S BODY SIZING CHART</h3>
+      <table>
+        <tbody>
+          <tr>
+            <th>Size</th>
+            <th>XS</th>
+            <th>S</th>
+            <th>M</th>
+            <th>L</th>
+            <th>XL</th>
+            <th>XXL</th>
+          </tr>
+          <tr>
+            <td>Chest</td>
+            <td>33" - 36"</td>
+            <td>36" - 39"</td>
+            <td>39" - 41"</td>
+            <td>41" - 43"</td>
+            <td>43" - 46"</td>
+            <td>46" - 49"</td>
+          </tr>
+          <tr>
+            <td>Waist</td>
+            <td>27" - 30"</td>
+            <td>30" - 33"</td>
+            <td>33" - 35"</td>
+            <td>36" - 38"</td>
+            <td>38" - 42"</td>
+            <td>42" - 45"</td>
+          </tr>
+          <tr>
+            <td>Hip</td>
+            <td>33" - 36"</td>
+            <td>36" - 39"</td>
+            <td>39" - 41"</td>
+            <td>41" - 43"</td>
+            <td>43" - 46"</td>
+            <td>46" - 49"</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="padding-left: 30px;"><img src="assets/images/size.jpg" alt=""></div>
+    </div>
+  </div>
+  <div class="hide">
+    <div id="productInquiry">
+      <div class="contact-form form-vertical">
+        <div class="page-title">
+          <h3>Camelia Reversible Jacket</h3>
+        </div>
+        <form method="post" action="#" id="contact_form" class="contact-form">
+          <input type="hidden" name="form_type" value="contact" />
+          <input type="hidden" name="utf8" value="✓" />
+          <div class="formFeilds">
+            <input type="hidden" name="contact[product name]" value="Camelia Reversible Jacket">
+            <input type="hidden" name="contact[product link]" value="/products/camelia-reversible-jacket-black-red">
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <input type="text" id="ContactFormName" name="contact[name]" placeholder="Name" value="" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                <input type="email" id="ContactFormEmail" name="contact[email]" placeholder="Email" autocapitalize="off"
+                  value="" required>
+              </div>
+              <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                <input required type="tel" id="ContactFormPhone" name="contact[phone]" pattern="[0-9\-]*"
+                  placeholder="Phone Number" value="">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <textarea required rows="10" id="ContactFormMessage" name="contact[body]"
+                  placeholder="Message"></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <input type="submit" class="btn" value="Send Message">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Including Jquery -->
+  <!-- sweet alert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.7/dist/sweetalert2.min.js"></script>
+
+  <script src="user_product_view/assets/js/vendor/jquery-3.3.1.min.js"></script>
+  <script src="user_product_view/assets/js/vendor/jquery.cookie.js"></script>
+  <script src="user_product_view/assets/js/vendor/modernizr-3.6.0.min.js"></script>
+  <script src="user_product_view/assets/js/vendor/wow.min.js"></script>
+  <!-- Including Javascript -->
+  <script src="user_product_view/assets/js/bootstrap.min.js"></script>
+  <script src="user_product_view/assets/js/plugins.js"></script>
+  <script src="user_product_view/assets/js/popper.min.js"></script>
+  <script src="user_product_view/assets/js/lazysizes.js"></script>
+  <script src="user_product_view/assets/js/main.js"></script>
+  <!-- Photoswipe Gallery -->
+  <script src="user_product_view/assets/js/vendor/photoswipe.min.js"></script>
+  <script src="user_product_view/assets/js/vendor/photoswipe-ui-default.min.js"></script>
+  <script>
+    $(function () {
+      var $pswp = $('.pswp')[0],
+        image = [],
+        getItems = function () {
+          var items = [];
+          $('.lightboximages a').each(function () {
+            var $href = $(this).attr('href'),
+              $size = $(this).data('size').split('x'),
+              item = {
+                src: $href,
+                w: $size[0],
+                h: $size[1]
+              }
+            items.push(item);
+          });
+          return items;
+        }
+      var items = getItems();
+
+      $.each(items, function (index, value) {
+        image[index] = new Image();
+        image[index].src = value['src'];
+      });
+      $('.prlightbox').on('click', function (event) {
+        event.preventDefault();
+
+        var $index = $(".active-thumb").parent().attr('data-slick-index');
+        $index++;
+        $index = $index - 1;
+
+        var options = {
+          index: $index,
+          bgOpacity: 0.9,
+          showHideOpacity: true
+        }
+        var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, items, options);
+        lightBox.init();
+      });
+    });
+  </script>
+  </div>
+
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+      <div class="pswp__ui pswp__ui--hidden">
+        <div class="pswp__top-bar">
+          <div class="pswp__counter"></div><button class="pswp__button pswp__button--close"
+            title="Close (Esc)"></button><button class="pswp__button pswp__button--share" title="Share"></button><button
+            class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button><button
+            class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button><button
+          class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+  <script>
+    const addToCart = async (productId) => {
+      console.log(7498)
+      const addToCartButton = document.getElementById("addToCartBtn");
+      const productName = document.getElementsByName("productName")[0].value;
+      const quantity = document.getElementById(productId).value
+
+
+      console.log("ENTERING>>>>");
+
+      const response = await fetch(`/add_to_cart?id=${productId}&quantity=${quantity}`, {
+        method: "GET",
+        headers: {
+          "content-Type": "application/json",
+        },
+      });
+      console.log(1004)
+      const data = await response.json();
+      console.log(111)
+      console.log(data)
+
+      // addToCartButton.innerHTML=`<a href="/cart?id={{userData._id}}" class="btn-product btn-cart"><span>Go to
+      // cart</span></a>`
+      console.log(10011)
+      if (data.message === "Item already in cart!!") {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Product is already in cart.\n So Quantity increased",
+          showConfirmButton: true,
+          confirmButtonColor: "#00A300",
+        });
+      } else {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Product successfully added to cart",
+          showConfirmButton: true,
+          confirmButtonColor: "#00A300",
+        });
+      }
+    };
+
+  </script>
+
+</body>
+
+<script>
+  const productQuantity = async (id, act) => {
+    const elem = document.getElementById(id);
+    if (act == "inc") elem.value ? (elem.value = Number(elem.value) + 1) : (elem.value = 1);
+    else if (act == "dec") elem.value > 1 ? (elem.value = Number(elem.value) - 1) : (elem.value = 1);
+
+    elem.setAttribute("value", elem.value);
+  };
+</script>
+
+<script>
+  const addToWishlist = async (productId, cartId) => {
+
+    const response = await fetch(`/addToWishlist?productId=${productId}&cartId=${cartId}`, {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+
+    const data = await response.json()
+
+    if (data.message === "Added to wishlist") {
+
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Product is moved to wishlist",
+        showConfirmButton: true,
+        confirmButtonColor: "#00A300",
+      });
+
+      document.getElementById('row' + productId).innerHTML = ''
+
+    } else {
+      Swal.fire({
+        position: "center",
+        icon: "warning",
+        title: "Product is already in wishlist!",
+        showConfirmButton: true,
+        confirmButtonColor: "#00A300",
+      });
+    }
+  }
+
+  async function submitReview() {
+    // Retrieve the values entered by the user
+    const author = document.getElementById('author').value
+    const review = document.getElementById('review').value
+    const product = document.getElementById('productId11').getAttribute('data-value');
+    const dataone = {
+      author: author,
+      review: review,
+      product: product
+    };
+    console.log(dataone)
+    const respond = await fetch('/addNewReview', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        data: dataone,
+      }),
+    })
+    const feedback = await respond.json()
+    if (feedback.message === "The review has been added successfully") {
+
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "The review has been added successfully",
+        showConfirmButton: true,
+        confirmButtonColor: "#00A300",
+      });
+
+      document.getElementById('row' + productId).innerHTML = ''
+
+    } else if (feedback.message === "The user has already written the review") {
+      Swal.fire({
+        position: "center",
+        icon: "warning",
+        title: "The user has already written the review",
+        showConfirmButton: true,
+        confirmButtonColor: "#00A300",
+      });
+    }
+    else if (feedback.message === "Please log in to add a review") {
+      Swal.fire({
+        position: "center",
+        icon: "warning",
+        title: "Please log in to add a review",
+        showConfirmButton: true,
+        confirmButtonColor: "#00A300",
+      });
+    } else {
+      Swal.fire({
+        position: "center",
+        icon: "warning",
+        title: "The user has not yet purchased this product",
+        showConfirmButton: true,
+        confirmButtonColor: "#00A300",
+      });
+    }
+  }
+  // Get the link element
+  const link = document.getElementById("myLink");
+
+  // Add a click event listener
+  link.addEventListener("click", function (event) {
+    event.preventDefault(); // Prevent the default link behavior
+
+    // Add the CSS class to trigger the animation
+    link.classList.add("animate-link");
+
+    // Remove the CSS class after the animation completes
+    setTimeout(function () {
+      link.classList.remove("animate-link");
+    }, 500); // Adjust the timeout duration to match the animation duration
+  });
+
+</script>
+
+
+
+
+</html>

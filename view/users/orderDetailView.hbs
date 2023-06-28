@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- molla/dashboard.html  22 Nov 2019 10:03:13 GMT -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>wastra</title>
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Molla - Bootstrap eCommerce Template">
+    <meta name="author" content="p-themes">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/user_profile/assets/images/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/user_profile/assets/images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/user_profile/assets/images/icons/favicon-16x16.png">
+    <link rel="manifest" href="/user_profile/assets/images/icons/site.html">
+    <link rel="mask-icon" href="/user_profile/assets/images/icons/safari-pinned-tab.svg" color="#666666">
+    <link rel="shortcut icon" href="/user_profile/assets/images/icons/favicon.ico">
+    <meta name="apple-mobile-web-app-title" content="Molla">
+    <meta name="application-name" content="Molla">
+    <meta name="msapplication-TileColor" content="#cc9966">
+    <meta name="msapplication-config" content="/user_profile/assets/images/icons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Plugins CSS File -->
+    <link rel="stylesheet" href="/user_profile/assets/css/bootstrap.min.css">
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="/user_profile/assets/css/style.css">
+    <link rel="shortcut icon" href="/user_profile/aassets/images/favicon.png" />
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="/user_profile/aassets/css/plugins.css">
+    <!-- Bootstap CSS -->
+    <link rel="stylesheet" href="/user_profile/aassets/css/bootstrap.min.css">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="/user_profile/aassets/css/style.css">
+    <link rel="stylesheet" href="/user_profile/aassets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.7/dist/sweetalert2.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" rel="stylesheet">
+    <style>
+        body {
+            color: black;
+        }
+
+        <style>.card {
+            width: 18rem;
+        }
+
+        .card-img-top {
+            height: 200px;
+            /* Adjust the height as per your requirement */
+            object-fit: cover;
+        }
+    </style>
+    </style>
+</head>
+
+<body>
+    <div class="header-wrap animated d-flex">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <!--Desktop Logo-->
+                <div class="logo col-md-2 col-lg-2 d-none d-lg-block">
+                    <a href="index.html">
+                        <img src="/user_profile/aassets/images/logo.svg" alt="Belle Multipurpose Html Template"
+                            title="Belle Multipurpose Html Template" />
+                    </a>
+                </div>
+                <!--End Desktop Logo-->
+                <div class="col-2 col-sm-3 col-md-3 col-lg-8">
+                    <div class="d-block d-lg-none">
+                        <button type="button" class="btn--link site-header__menu js-mobile-nav-toggle mobile-nav--open">
+                            <i class="icon anm anm-times-l"></i>
+                            <i class="anm anm-bars-r"></i>
+                        </button>
+                    </div>
+                    <!--Desktop Menu-->
+                    <nav class="grid__item" id="AccessibleNav"><!-- for mobile -->
+                        <ul id="siteNav" class="site-nav medium center hidearrow">
+                            <li class="lvl1 parent megamenu"><a href="/">Home <i class="anm anm-angle-down-l"></i></a>
+                            </li>
+                            <li class="lvl1 parent megamenu"><a href="#">Shop <i class="anm anm-angle-down-l"></i></a>
+                            </li>
+                            <li class="lvl1 parent megamenu"><a href="#">Product <i
+                                        class="anm anm-angle-down-l"></i></a></li>
+                            <li class="lvl1 parent dropdown"><a href="#"><i class="far fa-user-circle"></i> Account
+                                </a>
+                                <ul class="dropdown">
+                                    {{#if user}}
+                                    <li>
+                                        <a href="/logout" class="site-nav">
+                                            <i class="fas fa-sign-in-alt fa-rotate-180"></i>
+                                            Log out
+                                        </a>
+                                    </li>
+                                    {{else}}
+                                    <li><a href="/login" class="site-nav"><i class="fas fa-sign-in-alt"></i> Log in</a>
+                                    </li>
+                                    {{/if}}
+
+
+                            </li>
+                            <li><a href="/user_profile" class="site-nav"><i class="fa fa-user"
+                                        aria-hidden="true"></i>&nbsp;Profile</a></li>
+                            <li><a href="/cart?id={{userData._id}}" class="site-nav"><i
+                                        class="fas fa-shopping-cart"></i>
+                                    Cart</a>
+                            </li>
+                            <li><a href="/wishlist" class="site-nav"><i class="fas fa-heart"></i>
+                                    Wishlists</a></li>
+
+                        </ul>
+                    </nav>
+                    <!--End Desktop Menu-->
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-2 d-block d-lg-none mobile-logo">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="user_profile/aassets/images/logo.svg" alt="Belle Multipurpose Html Template"
+                                title="Belle Multipurpose Html Template" />
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 col-sm-3 col-md-3 col-lg-2">
+                    <div class="site-cart">
+                        <a href="#" class="site-header__cart" title="Cart">
+                            <i class="icon anm anm-bag-l"></i>
+                            <span id="CartCount" class="site-header__cart-count" data-cart-render="item_count">2</span>
+                        </a>
+                        <!--Minicart Popup-->
+                        
+                        <!--End Minicart Popup-->
+                    </div>
+                    <div class="site-header__search">
+                        <button type="button" class="search-trigger"><i class="icon anm anm-search-l"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- start of mobile menu -->
+    <div class="mobile-nav-wrapper" role="navigation">
+            <div class="closemobileMenu"><i class="icon anm anm-times-l pull-right"></i> Wastra Menu</div>
+            <ul id="MobileNav" class="mobile-nav">
+                {{#if user}}
+                <li class="lvl1 parent megamenu"><a href="/logout"><i class="fas fa-sign-in-alt fa-rotate-180"></i> Logout</a></li>
+                <li class="lvl1 parent megamenu"><a href="/user_profile"><i class="fa fa-user" aria-hidden="true"></i> profile </a>
+                <li class="lvl1 parent megamenu"><a href="/wishlist"><i class="fas fa-heart"></i> Wish List </a>
+                <li class="lvl1 parent megamenu"><a href="/cart?id={{userData._id}}"><i class="fas fa-shopping-cart"></i> Cart </a>
+                <li class="lvl1 parent megamenu"><a href=""> <i class=" fas fa-thin fa-wallet"></i> wallet : {{userData.wallet}} </a>
+                {{else}}
+                <li class="lvl1 parent megamenu"><a href="/login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                {{/if}}
+                
+            </ul>
+        </div>
+
+    <!-- end of  mobile menu -->
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="page-wrapper">
+
+
+        <main class="main">
+
+
+            <div class="page-content">
+                <div class="dashboard">
+                    <div class="container">
+                        <div class="row">
+                            <aside class="col-md-4 col-lg-3">
+                                <ul class="nav nav-dashboard flex-column mb-3 mb-md-0" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="tab-dashboard-link" data-toggle="tab"
+                                            href="#tab-dashboard" role="tab" aria-controls="tab-dashboard"
+                                            aria-selected="true">Dashboard</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="tab-orders-link" data-toggle="tab" href="#tab-orders"
+                                            role="tab" aria-controls="tab-orders" aria-selected="false">Account
+                                            Detail</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="tab-downloads-link" data-toggle="tab"
+                                            href="#tab-downloads" role="tab" aria-controls="tab-downloads"
+                                            aria-selected="false">Downloads</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="tab-address-link" data-toggle="tab" href="#tab-address"
+                                            role="tab" aria-controls="tab-address" aria-selected="false">Adresses</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="tab-account-link" data-toggle="tab" href="#tab-account"
+                                            role="tab" aria-controls="tab-account" aria-selected="false">Order
+                                            Details</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Sign Out</a>
+                                    </li>
+                                </ul>
+                            </aside><!-- End .col-lg-3 -->
+
+                            <div class="col-md-8 col-lg-9">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="tab-dashboard" role="tabpanel"
+                                        aria-labelledby="tab-dashboard-link">
+                                        <p>
+                                        <h1>Hello {{userData.name}} </h1> <span
+                                            class="font-weight-normal text-dark"></span>
+
+                                        <br>
+                                        From your account dashboard you can view your <a href="#tab-orders"
+                                            class="tab-trigger-link link-underline">recent orders</a>, manage your
+                                        <a href="#tab-address" class="tab-trigger-link">shipping and billing
+                                            addresses</a>, and <a href="#tab-account" class="tab-trigger-link">edit
+                                            your password and account details</a>.
+                                        </p>
+                                    </div><!-- .End .tab-pane -->
+
+                                    <div class="tab-pane fade" id="tab-orders" role="tabpanel"
+                                        aria-labelledby="tab-orders-link">
+                                        <p>No order has been made yet.</p>
+                                        <a href="category.html" class="btn btn-outline-primary-2"><span>GO SHOP</span><i
+                                                class="icon-long-arrow-right"></i></a>
+                                    </div><!-- .End .tab-pane -->
+
+                                    <div class="tab-pane fade" id="tab-downloads" role="tabpanel"
+                                        aria-labelledby="tab-downloads-link">
+                                        <p>No downloads available yet.</p>
+                                        <a href="category.html" class="btn btn-outline-primary-2"><span>GO SHOP</span><i
+                                                class="icon-long-arrow-right"></i></a>
+                                    </div><!-- .End .tab-pane -->
+
+                                    {{!-- adrss form --}}
+
+                                    <div class="tab-pane fade" id="tab-address" role="tabpanel"
+                                        aria-labelledby="tab-address-link">
+                                        <h3 class="card-title mt-2 mb-2">Billing Address</h3><!-- End .card-title -->
+                                        <p>The following addresses will be used on the checkout page by default.</p>
+
+                                        <div class="row">
+
+                                            {{#each addressData}}
+                                            <div class="col-lg-6" id="addressCard{{this._id}}">
+
+                                                <div class="card card-dashboard">
+                                                    <div class="card-body">
+
+
+                                                        <p> <strong>Name:</strong> {{this.name}}<br>
+                                                            <strong>Mobile number:</strong> {{this.mobile}}<br>
+                                                            <strong>Email:</strong> {{this.email}}<br>
+                                                            <strong>Address:</strong> {{this.addressLine}}<br>
+                                                            <strong>City:</strong> {{this.city}}<br>
+                                                            <strong>State:</strong> {{this.state}}<br>
+                                                            <strong>Pincode:</strong> {{this.pincode}}<br>
+
+                                                            <a class="edit-address-btn" id="editAddressBtn" href="#"
+                                                                data-id="{{this._id}}" onclick="scrollToForm()">Edit
+                                                                <i class="icon-edit"></i></a>
+                                                            <a href="#" class="ml-5"
+                                                                onclick="deleteAddress('{{this._id}}')">Delete <i
+                                                                    class="fa-solid fa-trash"></i></a>
+                                                        </p>
+                                                    </div><!-- End .card-body -->
+                                                </div><!-- End .card-dashboard -->
+                                            </div><!-- End .col-lg-6 -->
+
+                                            {{/each}}
+
+                                            {{!-- <div class="col-lg-6">
+                                                <div class="card card-dashboard">
+                                                    <div class="card-body">
+                                                        <h3 class="card-title">Shipping Address</h3>
+                                                        <!-- End .card-title -->
+
+                                                        <p>You have not set up this type of address yet.<br>
+                                                            <a href="#">Edit <i class="icon-edit"></i></a>
+                                                        </p>
+                                                    </div><!-- End .card-body -->
+                                                </div><!-- End .card-dashboard -->
+                                            </div><!-- End .col-lg-6 --> --}}
+                                        </div><!-- End .row -->
+
+
+                                        <button type="submit" id="addAddressBtn" class="btn btn-outline-primary-2 mt-1"
+                                            onclick="scrollToForm2()">
+                                            <span>ADD NEW ADDRESS</span>
+
+                                        </button>
+
+
+                                        <div style="display: none;" class="div mt-5" id="addAddressPanel">
+
+
+                                            <h2 class="checkout-title">Add New Address</h2>
+                                            <form id="addAddress">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+
+
+                                                        <label>Full Name *</label>
+                                                        <input type="text" name="name" class="form-control ">
+                                                    </div><!-- End .col-sm-6 -->
+
+                                                    <div class="col-sm-6">
+                                                        <label>Mobile Number *</label>
+                                                        <input type="number" name="mobileNumber" class="form-control">
+                                                    </div><!-- End .col-sm-6 -->
+                                                </div><!-- End .row -->
+
+                                                <label>Address Line *</label>
+                                                <input type="text" name="addressLine" class="form-control ">
+
+
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+
+                                                        <label>Email *</label>
+                                                        <input type="text" name="email" class="form-control ">
+                                                    </div><!-- End .col-sm-6 -->
+
+                                                    <div class="col-sm-6">
+                                                        <label>Town / City *</label>
+                                                        <input type="text" name="city" class="form-control ">
+
+
+                                                    </div><!-- End .col-sm-6 -->
+                                                </div><!-- End .row -->
+
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <label>State *</label>
+                                                        <input type="text" name="state" class="form-control">
+
+                                                    </div><!-- End .col-sm-6 -->
+
+                                                    <div class="col-sm-6">
+                                                        <label>Pincode *</label>
+                                                        <input type="number" name="pincode" class="form-control">
+                                                    </div><!-- End .col-sm-6 -->
+                                                </div><!-- End .row -->
+
+
+
+                                                <button type="submit" class="btn btn-outline-primary-2 mt-1">
+                                                    <span>SAVE ADDRESS</span>
+                                                    <i class="icon-long-arrow-right"></i>
+                                                </button>
+
+                                            </form>
+                                        </div>
+
+
+                                        <div style="display: none;" class="div mt-5" id="editAddressPanel">
+
+
+                                            <h2 class="checkout-title">Edit Address</h2>
+                                            <form id="updateAddress">
+
+                                                <input type="hidden" id="addressId">
+
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+
+
+                                                        <label>Full Name *</label>
+                                                        <input type="text" name="name"
+                                                            class="form-control full-name-input" id="name">
+                                                    </div><!-- End .col-sm-6 -->
+
+                                                    <div class="col-sm-6">
+                                                        <label>Mobile Number *</label>
+                                                        <input type="text" name="mobile"
+                                                            class="form-control  mobile-number-input" id="mobileNumber">
+                                                    </div><!-- End .col-sm-6 -->
+                                                </div><!-- End .row -->
+
+                                                <label>Address Line *</label>
+                                                <input type="text" name="addressLine"
+                                                    class="form-control address-line-input" id="addressLine">
+
+
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+
+                                                        <label>Email *</label>
+                                                        <input type="tel" name="email" class="form-control email-input"
+                                                            id="email">
+                                                    </div><!-- End .col-sm-6 -->
+
+                                                    <div class="col-sm-6">
+                                                        <label>Town / City *</label>
+                                                        <input type="text" name="city" class="form-control city-input"
+                                                            id="city">
+
+
+                                                    </div><!-- End .col-sm-6 -->
+                                                </div><!-- End .row -->
+
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <label>State *</label>
+                                                        <input type="text" name="state" class="form-control state-input"
+                                                            id="state">
+
+                                                    </div><!-- End .col-sm-6 -->
+
+                                                    <div class="col-sm-6">
+                                                        <label>Pincode *</label>
+                                                        <input type="text" name="pincode"
+                                                            class="form-control pincode-input" id="pincode">
+                                                    </div><!-- End .col-sm-6 -->
+                                                </div><!-- End .row -->
+
+
+
+                                                <button type="submit" class="btn btn-outline-primary-2 mt-1">
+                                                    <span>SAVE ADDRESS</span>
+                                                    <i class="icon-long-arrow-right"></i>
+                                                </button>
+
+                                            </form>
+
+
+                                        </div>
+
+                                    </div>
+
+
+
+
+
+
+
+                                    {{!-- //////////////////////////////////////////////////tab account detail
+                                    starting///////////////////////////////////// --}}
+
+                                    <div class="tab-pane fade" id="tab-account" role="tabpanel"
+                                        aria-labelledby="tab-account-link">
+                                        {{!-- <form action="#">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <label>Full Name *</label>
+                                                    <input type="text" class="form-control" required>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <label>Mobil Number</label>
+                                                    <input type="text" class="form-control" required>
+                                                </div>
+                                            </div>
+
+                                            <label>Address Line*</label>
+                                            <input type="text" class="form-control" required>
+                                            <small class="form-text">This will be how your name will be displayed in the
+                                                account section and in reviews</small>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <label>Email*</label>
+                                                    <input type="text" class="form-control" required>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <label>Town/city</label>
+                                                    <input type="text" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <label>State*</label>
+                                                    <input type="text" class="form-control" required>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <label>Pin Code</label>
+                                                    <input type="text" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-outline-primary-2">
+                                                <span>SAVE CHANGES</span>
+                                                <i class="icon-long-arrow-right"></i>
+                                            </button>
+
+
+                                        </form> --}}
+
+
+
+                                        <div class="row">
+                                            {{#each orderData}}
+                                            <div class="col-md-4">
+                                                <div class="card" style="width: 18rem;">
+                                                    <img class="card-img-top" src="/uploads/{{this.product.0.image}}"
+                                                        alt="Card image cap">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">{{this.product.0.name}}</h4>
+                                                        <p class="card-text">Order Id:{{this.orderId}}</p>
+                                                        <p class="card-text">{{this.paymentMethod}}</p>
+
+                                                        <p class="card-text">{{this.status}}</p>
+
+                                                        <a href="/user_profile/" class="btn btn-primary">View Detail</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{/each}}
+                                        </div>
+
+                                    </div>
+                                    {{!-- ////////////////////////////////////tab account detail original
+                                    end////////////////////////////////////////////// --}}
+
+
+
+
+                                    <div class="tab-pane fade" id="tab-account" role="tabpanel"
+                                        aria-labelledby="tab-account-link">
+                                        <form action="#" id="userProfile">
+
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <label>Name</label>
+                                                    <input type="text" class="form-control" name="userName"
+                                                        value="{{userData.name}}" required>
+                                                </div><!-- End .col-sm-6 -->
+
+                                                <div class="col-sm-6">
+                                                    <label>Mobile Number</label>
+                                                    <input type="number" class="form-control" name="userMobileNumber"
+                                                        value="{{userData.mobile}}" required>
+                                                </div><!-- End .col-sm-6 -->
+                                            </div><!-- End .row -->
+
+                                            <div class="row">
+                                                <div class="col-sm-6">
+
+                                                    <label>Email address</label>
+                                                    <input type="email" class="form-control" name="userEmail"
+                                                        value="{{userData.email}}" required>
+
+                                                </div>
+
+                                                <div class="col-sm-6">
+
+                                                    <label>Current password</label>
+                                                    <input type="password" class="form-control"
+                                                        name="userCurrentPassword">
+
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-6">
+
+                                                    <label>New password</label>
+                                                    <input type="password" class="form-control" name="userNewPassword">
+                                                </div>
+
+                                                <div class="col-sm-6">
+
+                                                    <label>Confirm new password</label>
+                                                    <input type="password" class="form-control mb-2"
+                                                        name="userConfirmNewPassword">
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-outline-primary-2">
+                                                <span>SAVE CHANGES</span>
+                                                <i class="icon-long-arrow-right"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div><!-- End .col-lg-9 -->
+                        </div><!-- End .row -->
+                    </div><!-- End .container -->
+                </div><!-- End .dashboard -->
+            </div><!-- End .page-content -->
+        </main><!-- End .main -->
+
+
+    </div><!-- End .page-wrapper -->
+    <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay"></div><!-- End .mobil-menu-overlay -->
+
+    <div class="mobile-menu-container">
+        <div class="mobile-menu-wrapper">
+            <span class="mobile-menu-close"><i class="icon-close"></i></span>
+
+            <form action="#" method="get" class="mobile-search">
+                <label for="mobile-search" class="sr-only">Search</label>
+                <input type="search" class="form-control" name="mobile-search" id="mobile-search"
+                    placeholder="Search in..." required>
+                <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+            </form>
+
+            <nav class="mobile-nav">
+                <ul class="mobile-menu">
+                    <li class="active">
+                        <a href="index.html">Home</a>
+
+
+                    <li>
+                        <a href="category.html">Shop</a>
+                        <ul>
+                            <li><a href="category-list.html">Shop List</a></li>
+                            <li><a href="category-2cols.html">Shop Grid 2 Columns</a></li>
+                            <li><a href="category.html">Shop Grid 3 Columns</a></li>
+                            <li><a href="category-4cols.html">Shop Grid 4 Columns</a></li>
+                            <li><a href="category-boxed.html"><span>Shop Boxed No Sidebar<span
+                                            class="tip tip-hot">Hot</span></span></a></li>
+                            <li><a href="category-fullwidth.html">Shop Fullwidth No Sidebar</a></li>
+                            <li><a href="product-category-boxed.html">Product Category Boxed</a></li>
+                            <li><a href="product-category-fullwidth.html"><span>Product Category Fullwidth<span
+                                            class="tip tip-new">New</span></span></a></li>
+                            <li><a href="cart.html">Cart</a></li>
+                            <li><a href="checkout.html">Checkout</a></li>
+                            <li><a href="wishlist.html">Wishlist</a></li>
+                            <li><a href="#">Lookbook</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="product.html" class="sf-with-ul">Product</a>
+                        <ul>
+                            <li><a href="product.html">Default</a></li>
+                            <li><a href="product-centered.html">Centered</a></li>
+                            <li><a href="product-extended.html"><span>Extended Info<span
+                                            class="tip tip-new">New</span></span></a></li>
+                            <li><a href="product-gallery.html">Gallery</a></li>
+                            <li><a href="product-sticky.html">Sticky Info</a></li>
+                            <li><a href="product-sidebar.html">Boxed With Sidebar</a></li>
+                            <li><a href="product-fullwidth.html">Full Width</a></li>
+                            <li><a href="product-masonry.html">Masonry Sticky Info</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Pages</a>
+                        <ul>
+                            <li>
+                                <a href="about.html">About</a>
+
+                                <ul>
+                                    <li><a href="about.html">About 01</a></li>
+                                    <li><a href="about-2.html">About 02</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="contact.html">Contact</a>
+
+                                <ul>
+                                    <li><a href="contact.html">Contact 01</a></li>
+                                    <li><a href="contact-2.html">Contact 02</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="login.html">Login</a></li>
+                            <li><a href="faq.html">FAQs</a></li>
+                            <li><a href="404.html">Error 404</a></li>
+                            <li><a href="coming-soon.html">Coming Soon</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="blog.html">Blog</a>
+
+                        <ul>
+                            <li><a href="blog.html">Classic</a></li>
+                            <li><a href="blog-listing.html">Listing</a></li>
+                            <li>
+                                <a href="#">Grid</a>
+                                <ul>
+                                    <li><a href="blog-grid-2cols.html">Grid 2 columns</a></li>
+                                    <li><a href="blog-grid-3cols.html">Grid 3 columns</a></li>
+                                    <li><a href="blog-grid-4cols.html">Grid 4 columns</a></li>
+                                    <li><a href="blog-grid-sidebar.html">Grid sidebar</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Masonry</a>
+                                <ul>
+                                    <li><a href="blog-masonry-2cols.html">Masonry 2 columns</a></li>
+                                    <li><a href="blog-masonry-3cols.html">Masonry 3 columns</a></li>
+                                    <li><a href="blog-masonry-4cols.html">Masonry 4 columns</a></li>
+                                    <li><a href="blog-masonry-sidebar.html">Masonry sidebar</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Mask</a>
+                                <ul>
+                                    <li><a href="blog-mask-grid.html">Blog mask grid</a></li>
+                                    <li><a href="blog-mask-masonry.html">Blog mask masonry</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Single Post</a>
+                                <ul>
+                                    <li><a href="single.html">Default with sidebar</a></li>
+                                    <li><a href="single-fullwidth.html">Fullwidth no sidebar</a></li>
+                                    <li><a href="single-fullwidth-sidebar.html">Fullwidth with sidebar</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="elements-list.html">Elements</a>
+                        <ul>
+                            <li><a href="elements-products.html">Products</a></li>
+                            <li><a href="elements-typography.html">Typography</a></li>
+                            <li><a href="elements-titles.html">Titles</a></li>
+                            <li><a href="elements-banners.html">Banners</a></li>
+                            <li><a href="elements-product-category.html">Product Category</a></li>
+                            <li><a href="elements-video-banners.html">Video Banners</a></li>
+                            <li><a href="elements-buttons.html">Buttons</a></li>
+                            <li><a href="elements-accordions.html">Accordions</a></li>
+                            <li><a href="elements-tabs.html">Tabs</a></li>
+                            <li><a href="elements-testimonials.html">Testimonials</a></li>
+                            <li><a href="elements-blog-posts.html">Blog Posts</a></li>
+                            <li><a href="elements-portfolio.html">Portfolio</a></li>
+                            <li><a href="elements-cta.html">Call to Action</a></li>
+                            <li><a href="elements-icon-boxes.html">Icon Boxes</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav><!-- End .mobile-nav -->
+
+            <div class="social-icons">
+                <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
+            </div><!-- End .social-icons -->
+        </div><!-- End .mobile-menu-wrapper -->
+    </div><!-- End .mobile-menu-container -->
+
+    <!-- Sign in / Register Modal -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="icon-close"></i></span>
+                    </button>
+
+                    <div class="form-box">
+                        <div class="form-tab">
+                            <ul class="nav nav-pills nav-fill" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin"
+                                        role="tab" aria-controls="signin" aria-selected="true">Sign In</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab"
+                                        aria-controls="register" aria-selected="false">Register</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="tab-content-5">
+                                <div class="tab-pane fade show active" id="signin" role="tabpanel"
+                                    aria-labelledby="signin-tab">
+                                    <form action="#">
+                                        <div class="form-group">
+                                            <label for="singin-email">Username or email address *</label>
+                                            <input type="text" class="form-control" id="singin-email"
+                                                name="singin-email" required>
+                                        </div><!-- End .form-group -->
+
+                                        <div class="form-group">
+                                            <label for="singin-password">Password *</label>
+                                            <input type="password" class="form-control" id="singin-password"
+                                                name="singin-password" required>
+                                        </div><!-- End .form-group -->
+
+                                        <div class="form-footer">
+                                            <button type="submit" class="btn btn-outline-primary-2">
+                                                <span>LOG IN</span>
+                                                <i class="icon-long-arrow-right"></i>
+                                            </button>
+
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input"
+                                                    id="signin-remember">
+                                                <label class="custom-control-label" for="signin-remember">Remember
+                                                    Me</label>
+                                            </div><!-- End .custom-checkbox -->
+
+                                            <a href="#" class="forgot-link">Forgot Your Password?</a>
+                                        </div><!-- End .form-footer -->
+                                    </form>
+                                    <div class="form-choice">
+                                        <p class="text-center">or sign in with</p>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <a href="#" class="btn btn-login btn-g">
+                                                    <i class="icon-google"></i>
+                                                    Login With Google
+                                                </a>
+                                            </div><!-- End .col-6 -->
+                                            <div class="col-sm-6">
+                                                <a href="#" class="btn btn-login btn-f">
+                                                    <i class="icon-facebook-f"></i>
+                                                    Login With Facebook
+                                                </a>
+                                            </div><!-- End .col-6 -->
+                                        </div><!-- End .row -->
+                                    </div><!-- End .form-choice -->
+                                </div><!-- .End .tab-pane -->
+                                <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                                    <form action="#">
+                                        <div class="form-group">
+                                            <label for="register-email">Your email address *</label>
+                                            <input type="email" class="form-control" id="register-email"
+                                                name="register-email" required>
+                                        </div><!-- End .form-group -->
+
+                                        <div class="form-group">
+                                            <label for="register-password">Password *</label>
+                                            <input type="password" class="form-control" id="register-password"
+                                                name="register-password" required>
+                                        </div><!-- End .form-group -->
+
+                                        <div class="form-footer">
+                                            <button type="submit" class="btn btn-outline-primary-2">
+                                                <span>SIGN UP</span>
+                                                <i class="icon-long-arrow-right"></i>
+                                            </button>
+
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="register-policy"
+                                                    required>
+                                                <label class="custom-control-label" for="register-policy">I agree to the
+                                                    <a href="#">privacy policy</a> *</label>
+                                            </div><!-- End .custom-checkbox -->
+                                        </div><!-- End .form-footer -->
+                                    </form>
+                                    <div class="form-choice">
+                                        <p class="text-center">or sign in with</p>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <a href="#" class="btn btn-login btn-g">
+                                                    <i class="icon-google"></i>
+                                                    Login With Google
+                                                </a>
+                                            </div><!-- End .col-6 -->
+                                            <div class="col-sm-6">
+                                                <a href="#" class="btn btn-login  btn-f">
+                                                    <i class="icon-facebook-f"></i>
+                                                    Login With Facebook
+                                                </a>
+                                            </div><!-- End .col-6 -->
+                                        </div><!-- End .row -->
+                                    </div><!-- End .form-choice -->
+                                </div><!-- .End .tab-pane -->
+                            </div><!-- End .tab-content -->
+                        </div><!-- End .form-tab -->
+                    </div><!-- End .form-box -->
+                </div><!-- End .modal-body -->
+            </div><!-- End .modal-content -->
+        </div><!-- End .modal-dialog -->
+    </div><!-- End .modal -->
+
+
+
+
+
+
+
+
+
+    <!-- Plugins JS File -->
+    <script src="/user_profile/assets/js/jquery.min.js"></script>
+    <script src="/user_profile/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/user_profile/assets/js/jquery.hoverIntent.min.js"></script>
+    <script src="/user_profile/assets/js/jquery.waypoints.min.js"></script>
+    <script src="/user_profile/assets/js/superfish.min.js"></script>
+    <script src="/user_profile/assets/js/owl.carousel.min.js"></script>
+    <!-- Main JS File -->
+    <script src="/user_profile/assets/js/main.js"></script>
+    <script src="/user_profile/aassets/js/vendor/jquery-3.3.1.min.js"></script>
+    <script src="/user_profile/aassets/js/vendor/jquery.cookie.js"></script>
+    <script src="/user_profile/aassets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="/user_profile/aassets/js/vendor/wow.min.js"></script>
+    <script src="/user_profile/aassets/js/vendor/masonry.js" type="text/javascript"></script>
+    <!-- Including Javascript -->
+    <script src="/user_profile/aassets/js/bootstrap.min.js"></script>
+    <script src="/user_profile/aassets/js/plugins.js"></script>
+    <script src="/user_profile/aassets/js/popper.min.js"></script>
+    <script src="/user_profile/aassets/js/lazysizes.js"></script>
+    <script src="/user_profile/aassets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.7/dist/sweetalert2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script>
+
+        /////////////////ADDING ADDRESS/////////////////
+        const addAddressBtn = document.getElementById('addAddressBtn');
+        const addAddressPanel = document.getElementById('addAddressPanel');
+
+        if (addAddressBtn) {
+
+            addAddressBtn.addEventListener('click', function () {
+                addAddressPanel.style.display = 'block';
+                editAddressPanel.style.display = 'none';
+            });
+        }
+
+
+        const addAddress = document.getElementById('addAddress')
+
+        if (addAddress) {
+
+            addAddress.addEventListener('submit', async function (event) {
+                event.preventDefault();
+
+                const form = event.target;
+                const formData = new FormData(form);
+
+                try {
+                    const response = await fetch('/addNewAddress', {
+                        method: 'POST',
+                        body: JSON.stringify(Object.fromEntries(formData)),
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Successfully added new address",
+                            showConfirmButton: true,
+                            confirmButtonText: "OK",
+                            confirmButtonColor: "#4CAF50"
+
+                        });
+                        addAddressPanel.style.display = 'none';
+                        form.reset()
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Some error occured",
+                            showConfirmButton: true,
+                            confirmButtonText: "CANCEL",
+                            confirmButtonColor: "#D22B2B"
+
+                        });
+                    }
+                } catch (error) {
+                    console.log('Error:', error.message);
+                }
+            });
+        }
+
+
+        const addAddressCheckout = document.getElementById('addAddressCheckout')
+
+        if (addAddressCheckout) {
+
+            addAddressCheckout.addEventListener('submit', async function (event) {
+                event.preventDefault();
+
+                const form = event.target;
+                const formData = new FormData(form);
+
+                try {
+                    const response = await fetch('/addNewAddress', {
+                        method: 'POST',
+                        body: JSON.stringify(Object.fromEntries(formData)),
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        const result = await Swal.fire({
+                            icon: "success",
+                            title: "Successfully added new address",
+                            showConfirmButton: true,
+                            confirmButtonText: "OK",
+                            confirmButtonColor: "#4CAF50"
+
+                        });
+                        if (result.value) {
+                            form.reset()
+                            location.reload()
+
+                        }
+
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Some error occured",
+                            showConfirmButton: true,
+                            confirmButtonText: "CANCEL",
+                            confirmButtonColor: "#D22B2B"
+
+                        });
+                    }
+                } catch (error) {
+                    console.log('Error:', error.message);
+                }
+            });
+        }
+
+    </script>
+
+    <script>
+        //////////////////////edit address//////////////////////////////////
+        const editAddressBtns = document.querySelectorAll('.edit-address-btn');
+        const editAddressPanel = document.querySelector('#editAddressPanel');
+
+        const addressIdInput = document.getElementById('addressId')
+
+        const fullNameInput = document.querySelector('.full-name-input');
+        const mobileNumberInput = document.querySelector('.mobile-number-input');
+        const addressLineInput = document.querySelector('.address-line-input');
+        const emailInput = document.querySelector('.email-input');
+        const cityInput = document.querySelector('.city-input');
+        const stateInput = document.querySelector('.state-input');
+        const pincodeInput = document.querySelector('.pincode-input');
+
+
+
+        editAddressBtns.forEach((btn) => {
+            btn.addEventListener('click', async (event) => {
+                event.preventDefault();
+                editAddressPanel.style.display = 'block';
+                addAddressPanel.style.display = 'none';
+
+                const addressId = btn.dataset.id;
+
+                try {
+
+                    const response = await fetch(`/addressData?addressId=${addressId}`, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json', // Adjust the content type based on your server's requirements
+                            // Add any other headers if required
+                        },
+                    });
+
+                    if (response.ok) {
+                        const addressData = await response.json();
+
+                        // Populate the input fields with the received addressData
+
+                        addressIdInput.value = addressData._id
+
+                        fullNameInput.value = addressData.name;
+                        mobileNumberInput.value = addressData.mobile;
+                        addressLineInput.value = addressData.addressLine;
+                        emailInput.value = addressData.email;
+                        cityInput.value = addressData.city;
+                        stateInput.value = addressData.state;
+                        pincodeInput.value = addressData.pincode;
+                    } else {
+                        console.log('Failed to fetch address data');
+                    }
+
+                } catch (error) {
+                    console.log(error.message);
+                }
+
+            });
+        });
+    </script>
+
+    <script>
+        ///////SCROLLING FUNCTION FOR FORM ONE////////
+
+
+
+        function scrollToForm() {
+            // Delay for a certain duration (e.g., 500 milliseconds) before scrolling
+            setTimeout(function () {
+                // Calculate the offset of the target element
+                const targetOffset = $('#editAddressPanel').offset().top;
+
+                // Calculate the height of the window
+                const windowHeight = $(window).height();
+
+                // Calculate the final scroll position to scroll to the top of the target element
+                const scrollPosition = targetOffset - windowHeight + $('#editAddressPanel').outerHeight();
+
+                // Animate scrolling to the target element
+                $('html, body').animate({
+                    scrollTop: scrollPosition
+                }, 800); // Adjust the animation speed as needed
+            }, 300); // Adjust the delay duration as needed
+        }
+
+    </script>
+
+    <script>
+        ////////SCROLLIIG FUNCTION FOR FORM TWO////////
+
+        function scrollToForm2() {
+            // Delay for a certain duration (e.g., 500 milliseconds) before scrolling
+            setTimeout(function () {
+                // Calculate the offset of the target element
+                const targetOffset = $('#addAddressPanel').offset().top;
+
+                // Calculate the height of the window
+                const windowHeight = $(window).height();
+
+                // Calculate the final scroll position to scroll to the top of the target element
+                const scrollPosition = targetOffset - windowHeight + $('#addAddressPanel').outerHeight();
+
+                // Animate scrolling to the target element
+                $('html, body').animate({
+                    scrollTop: scrollPosition
+                }, 800); // Adjust the animation speed as needed
+            }, 300); // Adjust the delay duration as needed
+        }
+    </script>
+
+    <script>
+        ///////UPDATE  ADDRESS////////
+        const updateAddress = document.getElementById('updateAddress')
+
+        if (updateAddress) {
+
+            updateAddress.addEventListener('submit', async function (event) {
+                event.preventDefault();
+
+                const form = event.target;
+                const formData = new FormData(form);
+
+                const addressId = document.getElementById('addressId').value;
+
+
+                try {
+                    const response = await fetch(`/updateAddress?addressId=${addressId}`, {
+                        method: 'POST',
+                        body: JSON.stringify(Object.fromEntries(formData)),
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Successfully Updated address",
+                            showConfirmButton: true,
+                            confirmButtonText: "OK",
+                            confirmButtonColor: "#4CAF50"
+
+                        });
+                        editAddressPanel.style.display = 'none';
+                        form.reset()
+
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Some error occured",
+                            showConfirmButton: true,
+                            confirmButtonText: "CANCEL",
+                            confirmButtonColor: "#D22B2B"
+
+                        });
+                    }
+                } catch (error) {
+                    console.log('Error:', error.message);
+                }
+            });
+        }
+
+    </script>
+    <script>
+        const deleteAddress = async (addressId) => {
+
+            const result = await Swal.fire({
+                title: 'Delete Address',
+                text: 'Do you want to delete this address? \nThis cannot be undo!',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: 'Yes,Delete',
+                cancelButtonText: 'DISMISS'
+
+            });
+
+            if (result.value) {
+                try {
+                    const response = await fetch(`/deleteAddress?addressId=${addressId}`, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': "application/json",
+                        }
+                    })
+
+
+                    if (response.ok) {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Address has been deleted successfully",
+                            showConfirmButton: true,
+                            confirmButtonText: "OK",
+                            confirmButtonColor: "#4CAF50",
+                        });
+                        document.getElementById('addressCard' + addressId).innerHTML = ''
+                    } else {
+                        Swal.fire({
+                            icon: "warning",
+                            title: "Somthing error!!",
+                            showConfirmButton: true,
+                            confirmButtonText: "DISMISS",
+                            confirmButtonColor: "#D22B2B"
+
+                        });
+                    }
+                } catch (error) {
+                    console.log(error.message);
+                }
+            }
+        }
+
+
+        const inputField = document.getElementById('checkout-discount-input');
+
+        if (inputField) {
+
+            inputField.addEventListener('input', function () {
+                this.value = this.value.toUpperCase();
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>wastra_orderList</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="/adminU/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/adminU/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/adminU/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="/adminU/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+</head>
+
+<body>
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner"
+            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-light navbar-light">
+                <a href="index.html" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary"></i>Administrator</h3>
+                </a>
+                
+                <div class="navbar-nav w-100">
+                    <a href="/admin/admin_dashboard" class="nav-item nav-link active"></i>Home</a>
+                    <a href="/admin/users" class="nav-item nav-link active"></i>User</a>
+                    <a href="/admin/orders" class="nav-item nav-link active"></i>Order</a>
+                    <a href="/admin/products" class="nav-item nav-link active"></i>Product</a>
+                    <a href="/admin/catagories" class="nav-item nav-link active"></i>Category</a>
+                    <a href="/admin/coupon" class="nav-item nav-link active"></i>Coupon</a>
+                    <a href="/admin/banner" class="nav-item nav-link active"></i>Banner</a>
+
+
+                    </head>
+                </div>
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                    <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
+                </a>
+                <a href="#" class="sidebar-toggler flex-shrink-0">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <form class="d-none d-md-flex ms-4">
+                    <input class="form-control border-0" type="search" placeholder="Search">
+                </form>
+                <div class="navbar-nav align-items-center ms-auto">
+
+
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle me-lg-2" src="adminU/img/user.jpg" alt=""
+                                style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex">Admin</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">My Profile</a>
+                            <a href="#" class="dropdown-item">Settings</a>
+                            <a href="/admin/logout" class="dropdown-item">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- Navbar End -->
+
+
+            <!-- Table Start -->
+            <div class="container-fluid pt-4 px-4">
+
+                <div class="col-sm-12">
+                    <div class="bg-light rounded h-100 p-4">
+                        <h6 class="mb-4">All Order</h6>
+                        <div class="table-responsive" style="font-size: small;">
+                            <table id="MyTable" class="display" cellspacing="0" width="100%" style="font-size: small;">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">DATE</th>
+                                        <th scope="col">ORDER ID</th>
+                                        <th scope="col">PAYMENT METHOD</th>
+                                        <th scope="col">STATUS</th>
+                                        <th scope="col">ADDRESS</th>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each orderData}}
+                                    <tr>
+                                        <td>{{formatDate this.date}}</td> &nbsp; &nbsp;
+
+                                        <td>{{this.orderId}} </td> &nbsp; &nbsp;
+
+                                        <td>{{this.paymentMethod}}</td> &nbsp; &nbsp;
+
+                                        <td>{{this.status}}</td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+                                        <td>{{this.addresses.0.addressLine}}</td>
+                                        <td>
+                                            <a href="/admin/oderDetailsPage?id={{this._id}}" type="button"
+                                                class="btn btn-secondary"
+                                                style="font-size: small;height:30px">Details</a>
+                                        </td> &nbsp; &nbsp;
+                                        <td>
+                                            <form action="/admin/changeStatus?id={{this._id}}" method="post"
+                                                style="font-size: small;">
+                                                <div class="d-flex" style="width: 70%;">
+                                                    <div style="width: 100%;font-size:small;" class="p-l-15 ">
+                                                        <select name="status" class="form-select"
+                                                            aria-label="Default select example"
+                                                            style="font-size: small;">
+                                                            <option selected>Change order status</option>
+                                                            <option value="Shipped">Shipped</option>
+                                                            <option value="Delivered">Delivered</option>
+                                                            <option value="Delivered">Cancelled</option>
+                                                        </select>
+                                                    </div>
+                                                    <div>
+                                                        <button type="submit" class="m-l-5 btn btn-primary"
+                                                            style="font-size:small;">submit</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    {{/each}}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Content End -->
+
+
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+    {{!-- <script src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.4/sp-2.1.2/datatables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+    });
+</script> --}}
+  
+    <script type="text/javascript"></script>
+</body>
+
+</html>
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/adminU/lib/chart/chart.min.js"></script>
+<script src="/adminU/lib/easing/easing.min.js"></script>
+<script src="/adminU/lib/waypoints/waypoints.min.js"></script>
+<script src="/adminU/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="/adminU/lib/tempusdominus/js/moment.min.js"></script>
+<script src="/adminU/lib/tempusdominus/js/moment-timezone.min.js"></script>
+<script src="/adminU/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<!-- Template Javascript -->
+<script src="https://code.jquery.com/jquery-1.12.3.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#MyTable').DataTable({
+            initComplete: function () {
+                this.api().columns().every(function () {
+                    var column = this;
+                    var select = $('<select><option value=""></option></select>')
+                        .appendTo($(column.footer()).empty())
+                        .on('change', function () {
+                            var val = $.fn.dataTable.util.escapeRegex(
+                                $(this).val()
+                            );
+                            //to select and search from grid  
+                            column
+                                .search(val ? '^' + val + '$' : '', true, false)
+                                .draw();
+                        });
+
+                    column.data().unique().sort().each(function (d, j) {
+                        select.append('<option value="' + d + '">' + d + '</option>')
+                    });
+                });
+            }
+        });
+    });  
+</script>
+<script src="/adminU/js/main.js"></script>
+</body>
+
+</html>
