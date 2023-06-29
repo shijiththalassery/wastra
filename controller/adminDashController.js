@@ -169,63 +169,7 @@ const fetchpieChartData = async (req, res) => {
     }
 };
 
-// const exportPdfDailySales = async (req, res) => {
-//     try {
 
-//         const today = new Date().toISOString().split('T')[0];
-
-//         const todaysOrders = await Order.aggregate([
-//             {
-//                 $match: {
-//                     orderDate: {
-//                         $gte: new Date(today),
-//                         $lt: new Date(today + 'T23:59:59.999Z')
-//                     }
-//                 }
-//             }, {
-//                 $lookup: {
-//                     from: 'users',
-//                     localField: 'userId',
-//                     foreignField: '_id',
-//                     as: 'user'
-//                 }
-//             }, {
-//                 $unwind: '$user'
-//             }, {
-//                 $lookup: {
-//                     from: "products",
-//                     localField: "item.product",
-//                     foreignField: "_id",
-//                     as: "productDetails"
-//                 }
-//             },
-//         ]);
-
-//         const orderData = {
-//             todaysOrders: todaysOrders
-//         }
-
-//         const filePathName = path.resolve(__dirname, "../view/admin/htmlToPdf.ejs")
-//         const htmlString = fs.readFileSync(filePathName).toString();
-
-//         const ejsData = ejs.render(htmlString, orderData)
-//         console.log('--------   this is order data-----------')
-//         console.log(orderData)
-
-//         await createDailySalesPdf(ejsData);
-
-//         const pdfFilePath = 'DailySalesReport.pdf';
-//         const pdfData = fs.readFileSync(pdfFilePath);
-
-//         res.setHeader('Content-Type', 'application/pdf');
-//         res.setHeader('Content-Disposition', 'attachment; filename="DailySalesReport.pdf"');
-
-//         res.send(pdfData);
-
-//     } catch (error) {
-//         console.log(error.message);
-//     }
-// };
 const exportPdfDailySales = async (req, res) => {
     try {
       const today = new Date().toISOString().split('T')[0];
@@ -296,13 +240,7 @@ const createDailySalesPdf = async (html) => {
     const pdfBytes = await pdfDoc.save();
     fs.writeFileSync('DailySalesReport.pdf', pdfBytes);
   };
-// const createDailySalesPdf = async (html) => {
-//     const browser = await puppeteer.launch();
-//     const page = await browser.newPage();
-//     await page.setContent(html);
-//     await page.pdf({ path: 'DailySalesReport.pdf' });
-//     await browser.close();
-// };
+
 
 const loadOrderPdf = async (req, res) => {
     try {

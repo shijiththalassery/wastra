@@ -3,6 +3,8 @@
 /**
  * Module dependencies.
  */
+const express = require('express');
+const app = express();
 
 var app = require('../app');
 var debug = require('debug')('projecthelper:server');
