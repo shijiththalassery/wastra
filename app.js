@@ -103,7 +103,7 @@ app.use('/', userRoute)
 
 
 app.listen(process.env.PORT, function () {
-  console.log('server is running on http://localhost:7498/')
+  console.log('server is running on http://localhost:3000/')
 })
 
 // app.use(async function(req,res,next){
