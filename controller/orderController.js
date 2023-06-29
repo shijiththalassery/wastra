@@ -7,7 +7,9 @@ const Coupon = require('../model/couponModel')
 const Razorpay = require('razorpay');
 const moment = require('moment');
 const { ObjectId } = require('mongodb');
-const puppeteer = require('puppeteer');
+//const puppeteer = require('puppeteer');
+const { PDFDocument, StandardFonts } = require('pdf-lib');
+const fs = require('fs');
 
 
 
@@ -375,37 +377,86 @@ const returnOrder = async (req, res) => {
     }
 }
 
+// const downloadInvoice = async (req, res) => {
+//     try {
+//         const orderId = req.query.orderId
+//         const orderData = await Order.findById(orderId)
+//         const browser = await puppeteer.launch({ headless: false })
+//         const page = await browser.newPage()
+
+
+//         await page.goto(`${req.protocol}://${req.get('host')}/invoice?orderId=${orderId}`, {
+//             waitUntil: 'networkidle2'
+//         })
+
+//         const todayDate = new Date()
+
+//         const pdfBuffer = await page.pdf({
+//             format: 'A4',
+//             printBackground: true,
+//         });
+
+//         await browser.close()
+
+//         res.set({
+//             'Content-Type': 'application/pdf',
+//             'Content-Disposition': `attachment; filename=${orderData.orderId}Invoice.pdf`,
+//         });
+
+//         res.send(pdfBuffer);
+//     } catch (error) {
+//         console.log(error.message)
+//     }
+// }
+
+
+
 const downloadInvoice = async (req, res) => {
     try {
-        const orderId = req.query.orderId
-        const orderData = await Order.findById(orderId)
-        const browser = await puppeteer.launch({ headless: false })
-        const page = await browser.newPage()
-
-
-        await page.goto(`${req.protocol}://${req.get('host')}/invoice?orderId=${orderId}`, {
-            waitUntil: 'networkidle2'
-        })
-
-        const todayDate = new Date()
-
-        const pdfBuffer = await page.pdf({
-            format: 'A4',
-            printBackground: true,
-        });
-
-        await browser.close()
-
-        res.set({
-            'Content-Type': 'application/pdf',
-            'Content-Disposition': `attachment; filename=${orderData.orderId}Invoice.pdf`,
-        });
-
-        res.send(pdfBuffer);
+      const orderId = req.query.orderId;
+      const orderData = await Order.findById(orderId);
+  
+      // Create a new PDF document
+      const pdfDoc = await PDFDocument.create();
+      const page = pdfDoc.addPage();
+      const { width, height } = page.getSize();
+  
+      // Load the font
+      const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+  
+      // Set the font size and position for the text
+      const fontSize = 12;
+      const textX = 50;
+      const textY = height - 50;
+  
+      // Add the invoice details to the PDF
+      page.drawText(`Order ID: ${orderData.orderId}`, {
+        x: textX,
+        y: textY,
+        size: fontSize,
+        font,
+      });
+      // Add more text elements as needed for the invoice details
+  
+      const pdfBytes = await pdfDoc.save();
+  
+      const filePath = `${__dirname}/${orderData.orderId}Invoice.pdf`;
+  
+      fs.writeFileSync(filePath, pdfBytes);
+  
+      res.download(filePath, `${orderData.orderId}Invoice.pdf`, (err) => {
+        if (err) {
+          console.error('Error downloading PDF:', err);
+        }
+  
+        // Delete the PDF file after download
+        fs.unlinkSync(filePath);
+      });
     } catch (error) {
-        console.log(error.message)
+      console.log(error.message);
+      // Handle the error appropriately
     }
-}
+  };
 
 const invoice = async (req, res) => {
     try {
