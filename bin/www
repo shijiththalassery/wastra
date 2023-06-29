@@ -3,11 +3,9 @@
 /**
  * Module dependencies.
  */
-const express = require('express');
-const app = express();
 
 var app = require('../app');
-var debug = require('debug')('projecthelper:server');
+var debug = require('debug')('test:server');
 var http = require('http');
 
 /**
