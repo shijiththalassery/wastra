@@ -132,7 +132,8 @@
                         <ul id="siteNav" class="site-nav medium center hidearrow">
                             <li class="lvl1 parent megamenu"><a href="/">Home <i class="anm anm-angle-down-l"></i></a>
                             </li>
-                            <li class="lvl1 parent megamenu"><a href="/shop_all_product">Shop <i class="anm anm-angle-down-l"></i></a>
+                            <li class="lvl1 parent megamenu"><a href="/shop_all_product">Shop <i
+                                        class="anm anm-angle-down-l"></i></a>
                             </li>
                             <li class="lvl1 parent megamenu"><a href="#">Contact us<i
                                         class="anm anm-angle-down-l"></i></a></li>
@@ -271,7 +272,7 @@
                                         <h1 style="text-align: center;">{{this.product.name}}</h1>
 
                                         <div class="col-md-2">
-                                            <img src="/uploads/{{this.product.image}}" class="img-fluid" alt="Phone">
+                                            <img src="{{this.product.image}}" class="img-fluid" alt="Phone">
                                         </div>
                                         <div
                                             class="col-md-2 text-center d-flex justify-content-center align-items-center">
@@ -350,18 +351,20 @@
                                     <div class="d-flex justify-content-between ">
                                         {{!-- <p class="text-muted mb-0">Recepits Voucher : 18KU-62IIK</p> --}}
                                         <p class="text-muted mb-0"><span class="fw-bold me-4">Payment
-                                                Method</span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;{{orderDetails.paymentMethod}} </p>
+                                                Method</span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;{{orderDetails.paymentMethod}}
+                                        </p>
                                     </div>
                                     <div class="d-flex justify-content-between ">
                                         {{!-- <p class="text-muted mb-0">Recepits Voucher : 18KU-62IIK</p> --}}
                                         <p class="text-muted mb-0"><span class="fw-bold me-4">Total totalAmount
 
-                                        </span>&nbsp;:&nbsp;{{orderDetails.total}} </p>
+                                            </span>&nbsp;:&nbsp;{{orderDetails.total}} </p>
                                     </div>
                                     <div class="d-flex justify-content-between ">
                                         {{!-- <p class="text-muted mb-0">Recepits Voucher : 18KU-62IIK</p> --}}
                                         <p class="text-muted mb-0"><span class="fw-bold me-4">Discount
-                                                Amount</span>&nbsp;&nbsp;&nbsp;:&nbsp;{{orderDetails.discountAmount}} </p>
+                                                Amount</span>&nbsp;&nbsp;&nbsp;:&nbsp;{{orderDetails.discountAmount}}
+                                        </p>
                                     </div>
                                     {{!-- {{#each clearOrderData}} --}}
                                     <div class="d-flex justify-content-between ">
@@ -399,9 +402,11 @@
                                     class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">
                                     Total
                                     paid: <span class="h2 mb-0 ms-2">₹{{orderDetails.totalAmount}} </span></h5>
+                                {{#if (eq orderDetails.status 'Delivered')}}
                                 <a class="btn btn-primary" href="/downloadInvoice?orderId={{orderDetails._id}}">
                                     <i class="fas fa-download"></i> Download Invoice
                                 </a>
+                                {{/if}}
                             </div>
                         </div>
                     </div>
@@ -570,7 +575,7 @@
         </div><!-- End .mobile-menu-wrapper -->
     </div>
 
-    
+
 
     <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">

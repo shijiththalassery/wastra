@@ -8,8 +8,12 @@ const Razorpay = require('razorpay');
 const moment = require('moment');
 const { ObjectId } = require('mongodb');
 //const puppeteer = require('puppeteer');
-const { PDFDocument, StandardFonts } = require('pdf-lib');
+//const { PDFDocument, StandardFonts } = require('pdf-lib');
+const PDFDocument = require('pdfkit');
 const fs = require('fs');
+const pdf = require('html-pdf');
+const path = require('path')
+
 
 
 
@@ -295,6 +299,7 @@ const viewOrderDetail = async (req, res) => {
             },
             { $unwind: "$address" }
         ])
+        console.log(clearOrderData, 'shijith clear ordr data')
 
         res.render('orderManage', { orderDetails, clearOrderData, address, product, today })
     } catch (error) {
@@ -411,66 +416,93 @@ const returnOrder = async (req, res) => {
 
 
 
-const downloadInvoice = async (req, res) => {
+
+
+
+const renderInvoice = (res, view, data) => {
+    console.log('renderInvoice function called');
+    return new Promise((resolve, reject) => {
+        console.log('res is here')
+      res.render(view, data, (err, renderedTemplate) => {
+        if (err) {
+            console.log('error is generated')
+          reject(err);
+        } else {
+            console.log('resolved aswasam')
+          resolve(renderedTemplate);
+        }
+      });
+    });
+  };
+  
+  const downloadInvoice = async (req, res) => {
     try {
+      console.log('entering download invoice');
       const orderId = req.query.orderId;
       const orderData = await Order.findById(orderId);
   
-      // Create a new PDF document
-      const pdfDoc = await PDFDocument.create();
-      const page = pdfDoc.addPage();
-      const { width, height } = page.getSize();
+      // Render the invoice HBS template to a string
+      const renderedInvoice = await renderInvoice('invoice', { orderData });
+      console.log(renderedInvoice, 'renderinvoiceeeeeeeeeeeeeeeeeeeeeeeeeeee');
   
-      // Load the font
-      const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+      // Create a temporary HTML file with the rendered invoice content
+      console.log('shijith pk is here ');
+      const tempHtmlFileName = 'temp_invoice.html';
+      const tempHtmlPath = path.join(__dirname, tempHtmlFileName);
+      fs.writeFileSync(tempHtmlPath, renderedInvoice);
   
-      // Set the font size and position for the text
-      const fontSize = 12;
-      const textX = 50;
-      const textY = height - 50;
-  
-      // Add the invoice details to the PDF
-      page.drawText(`Order ID: ${orderData.orderId}`, {
-        x: textX,
-        y: textY,
-        size: fontSize,
-        font,
-      });
-      // Add more text elements as needed for the invoice details
-  
-      const pdfBytes = await pdfDoc.save();
-  
-      const filePath = `${__dirname}/${orderData.orderId}Invoice.pdf`;
-  
-      fs.writeFileSync(filePath, pdfBytes);
-  
-      res.download(filePath, `${orderData.orderId}Invoice.pdf`, (err) => {
+      console.log(tempHtmlPath, 'temphtml path is defined here ');
+      // Generate the PDF from the HTML file using html-pdf module
+      pdf.create(fs.readFileSync(tempHtmlPath, 'utf8')).toStream((err, stream) => {
         if (err) {
-          console.error('Error downloading PDF:', err);
+          console.error('Error generating PDF:', err);
+          // Handle the error appropriately
+          return;
         }
   
-        // Delete the PDF file after download
-        fs.unlinkSync(filePath);
+        // Set the response headers to trigger the download
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader(
+          'Content-Disposition',
+          `attachment; filename=${orderData.orderId}Invoice.pdf`
+        );
+  
+        // Pipe the PDF stream to the response
+        stream.pipe(res);
+  
+        // Delete the temporary HTML file
+        fs.unlinkSync(tempHtmlPath);
       });
     } catch (error) {
       console.log(error.message);
       // Handle the error appropriately
     }
   };
+  
 
-const invoice = async (req, res) => {
-    try {
-        const orderId = req.query.orderId;
-        const orderData = await Order.findById(orderId)
-        const userDatas = await User.findById(orderData.userId)
-        const address = await Address.findById(orderData.address)
-        const invoiceDate = moment(new Date()).format('MMMM D, YYYY')
 
-        res.render('invoice', { orderData, userDatas, invoiceDate, address })
-    } catch (error) {
-        console.log(error.message)
-    }
-}
+
+//   const invoice = async (req, res) => {
+//     try {
+//       const orderId = req.query.orderId;
+//       const orderData = await Order.findById(orderId);
+//       const userDatas = await User.findById(orderData.userId);
+//       const address = await Address.findById(orderData.address);
+//       const invoiceDate = moment(new Date()).format('MMMM D, YYYY');
+
+//       // Send the invoice data to the invoice template
+//       res.render('invoice', {
+//         orderData,
+//         userDatas,
+//         invoiceDate,
+//         address,
+//       });
+//     } catch (error) {
+//       console.log(error.message);
+//       // Handle the error appropriately
+//     }
+//   };
+
 
 module.exports = {
     checkStock,
@@ -484,5 +516,5 @@ module.exports = {
     oderDetailsPage,
     returnOrder,
     downloadInvoice,
-    invoice
+    //invoice
 }

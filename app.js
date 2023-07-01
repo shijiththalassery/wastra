@@ -100,14 +100,15 @@ app.use('/', userRoute)
 
 ///////for admin router////////
 
+app.use(async function(req,res,next){
+   const userData = req.session.cartUser;
+  res.render('../view/users/404');
+})
 
 
 app.listen(process.env.PORT, function () {
   console.log('server is running on http://localhost:3000/')
 })
 
-// app.use(async function(req,res,next){
-//   const userData = req.session.cartUser;
-//   const categoryData = req.session.user;
-//   res.status(404).render('page404',{userData,categoryData});
-// })
+
+

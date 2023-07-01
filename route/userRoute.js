@@ -65,7 +65,7 @@ user_route.get('/viewOrderdetail',auth.blockCheck, auth.isLogin,orderController.
 user_route.get('/cancellOrder',auth.blockCheck, auth.isLogin,orderController.cancellOrder)
 user_route.get('/returnOrder',auth.blockCheck, auth.isLogin,orderController.returnOrder)
 user_route.get('/downloadInvoice',auth.blockCheck, auth.isLogin,orderController.downloadInvoice)
-user_route.get('/invoice',orderController.invoice)
+//user_route.get('/invoice',orderController.invoice)
 
 
 

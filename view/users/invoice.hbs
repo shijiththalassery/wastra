@@ -79,10 +79,10 @@
 
     <div class="invoice-info">
       <div>
-        <p>Ordered Date :&nbsp;&nbsp;<strong>{{orderData.date}}</strong></p>
+        <p>Ordered Date :&nbsp;&nbsp;<strong>{{formatDate orderData.date}}</strong></p>
         <p>Orderd ID :&nbsp;&nbsp;<strong>{{orderData.orderId}}</strong></p>
         <p>Payment Method :&nbsp;&nbsp;<strong>{{orderData.paymentMethod}}</strong></p>
-        <p>Delivered Date :&nbsp;&nbsp;<strong>{{orderData.deliveredDate}}</strong></p>
+        <p>Delivered Date :&nbsp;&nbsp;<strong>{{formatDate orderData.deliveredDate}}</strong></p>
         
       </div>
       <div>
@@ -120,5 +120,7 @@
       <p style="padding-right: 107px;"><strong>Total:{{orderData.totalAmount}} </strong></p>
     </div>
   </div>
+      {{!-- <embed src="data:application/pdf;base64,{{pdfBytes}}" type="application/pdf" width="100%" height="600px"> --}}
+
 </body>
 </html>
