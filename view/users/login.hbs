@@ -6,11 +6,11 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Account &ndash; Belle Multipurpose Bootstrap 4 Template</title>
+	<title>wastra</title>
 	<meta name="description" content="description">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Favicon -->
-	<link rel="shortcut icon" href="/user_partial_login/assets/images/favicon.png" />
+	<link rel="shortcut icon" href="/logoAndFevicon/wastra.png" />
 	<!-- Plugins CSS -->
 	<link rel="stylesheet" href="/user_partial_login/assets/css/plugins.css">
 	<!-- Bootstap CSS -->
@@ -45,8 +45,8 @@
 				<div class="row align-items-center">
 					<!--Desktop Logo-->
 					<div class="logo col-md-2 col-lg-2 d-none d-lg-block">
-						<a href="index.html">
-							<img src="/user_partial_login/assets/images/logo.svg" alt="wastra online shopping"
+						<a href="/">
+							<img src="/logoAndFevicon/originalLogo.png" alt="wastra online shopping"
 								title="wastra online shopping" />
 						</a>
 					</div>
@@ -101,20 +101,24 @@
 		<!--End Header-->
 		<!--Mobile Menu-->
 		<div class="mobile-nav-wrapper" role="navigation">
-            <div class="closemobileMenu"><i class="icon anm anm-times-l pull-right"></i> Wastra Menu</div>
-            <ul id="MobileNav" class="mobile-nav">
-                {{#if user}}
-                <li class="lvl1 parent megamenu"><a href="/logout"><i class="fas fa-sign-in-alt fa-rotate-180"></i> Logout</a></li>
-                <li class="lvl1 parent megamenu"><a href="/user_profile"><i class="fa fa-user" aria-hidden="true"></i> profile </a>
-                <li class="lvl1 parent megamenu"><a href="/wishlist"><i class="fas fa-heart"></i> Wish List </a>
-                <li class="lvl1 parent megamenu"><a href="/cart?id={{userData._id}}"><i class="fas fa-shopping-cart"></i> Cart </a>
-                <li class="lvl1 parent megamenu"><a href=""> <i class=" fas fa-thin fa-wallet"></i> wallet : {{userData.wallet}} </a>
-                {{else}}
-                <li class="lvl1 parent megamenu"><a href="/login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-                {{/if}}
-                
-            </ul>
-        </div>
+			<div class="closemobileMenu"><i class="icon anm anm-times-l pull-right"></i> Wastra Menu</div>
+			<ul id="MobileNav" class="mobile-nav">
+				{{#if user}}
+				<li class="lvl1 parent megamenu"><a href="/logout"><i class="fas fa-sign-in-alt fa-rotate-180"></i>
+						Logout</a></li>
+				<li class="lvl1 parent megamenu"><a href="/user_profile"><i class="fa fa-user" aria-hidden="true"></i>
+						profile </a>
+				<li class="lvl1 parent megamenu"><a href="/wishlist"><i class="fas fa-heart"></i> Wish List </a>
+				<li class="lvl1 parent megamenu"><a href="/cart?id={{userData._id}}"><i
+							class="fas fa-shopping-cart"></i> Cart </a>
+				<li class="lvl1 parent megamenu"><a href=""> <i class=" fas fa-thin fa-wallet"></i> wallet :
+						{{userData.wallet}} </a>
+					{{else}}
+				<li class="lvl1 parent megamenu"><a href="/login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+				{{/if}}
+
+			</ul>
+		</div>
 		<!--End Mobile Menu-->
 
 		<div id="page-content">
@@ -136,41 +140,43 @@
 							<h4 style="color:red">{{invalid}} </h1>
 								{{/if}}
 								{{#if blocked}}
-							<h4 style="color:red">{{blocked}} </h1>
-								{{/if}}
-								{{#if successMessage}}
-								<h4 style="color:rgb(5, 190, 51)">{{successMessage}} </h1>
+								<h4 style="color:red">{{blocked}} </h1>
 									{{/if}}
-									<form method="post" action="/login" id="login" accept-charset="UTF-8"
-										class="contact-form">
-										<div class="row">
-											<div class="col-12 col-sm-12 col-md-12 col-lg-12">
-												<div class="form-group">
-													<label for="CustomerEmail">Email</label>
-													<input type="email" name="email" placeholder="" id="email" class=""
-														autocorrect="off" autocapitalize="off" autofocus="">
+									{{#if successMessage}}
+									<h4 style="color:rgb(5, 190, 51)">{{successMessage}} </h1>
+										{{/if}}
+										<form method="post" action="/login" id="login" accept-charset="UTF-8"
+											class="contact-form">
+											<div class="row">
+												<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+													<div class="form-group">
+														<label for="CustomerEmail">Email</label>
+														<input type="email" name="email" placeholder="" id="email"
+															class="" autocorrect="off" autocapitalize="off"
+															autofocus="">
+													</div>
+												</div>
+												<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+													<div class="form-group">
+														<label for="CustomerPassword">Password</label>
+														<input type="password" value="" name="password" placeholder=""
+															id="Password" class="">
+													</div>
 												</div>
 											</div>
-											<div class="col-12 col-sm-12 col-md-12 col-lg-12">
-												<div class="form-group">
-													<label for="CustomerPassword">Password</label>
-													<input type="password" value="" name="password" placeholder=""
-														id="Password" class="">
+											<div class="row">
+												<div class="text-center col-12 col-sm-12 col-md-12 col-lg-12">
+													<input type="submit" class="btn mb-3" value="Sign In">
+													<p class="mb-4">
+														<a href="/forgotpassword" id="RecoverPassword">Forgot your
+															password?</a>
+														&nbsp; | &nbsp;
+														<a href="/register" id="customer_register_link">Create
+															account</a>
+													</p>
 												</div>
 											</div>
-										</div>
-										<div class="row">
-											<div class="text-center col-12 col-sm-12 col-md-12 col-lg-12">
-												<input type="submit" class="btn mb-3" value="Sign In">
-												<p class="mb-4">
-													<a href="/forgotpassword" id="RecoverPassword">Forgot your
-														password?</a>
-													&nbsp; | &nbsp;
-													<a href="/register" id="customer_register_link">Create account</a>
-												</p>
-											</div>
-										</div>
-									</form>
+										</form>
 						</div>
 					</div>
 				</div>

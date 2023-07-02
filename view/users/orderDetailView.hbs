@@ -13,12 +13,12 @@
     <meta name="description" content="Molla - Bootstrap eCommerce Template">
     <meta name="author" content="p-themes">
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/user_profile/assets/images/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/user_profile/assets/images/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/user_profile/assets/images/icons/favicon-16x16.png">
+    <link rel="shortcut icon" href="/logoAndFevicon/wastra.png" />
+
+    <link rel="shortcut icon" href="/logoAndFevicon/wastra.png" />
     <link rel="manifest" href="/user_profile/assets/images/icons/site.html">
     <link rel="mask-icon" href="/user_profile/assets/images/icons/safari-pinned-tab.svg" color="#666666">
-    <link rel="shortcut icon" href="/user_profile/assets/images/icons/favicon.ico">
+
     <meta name="apple-mobile-web-app-title" content="Molla">
     <meta name="application-name" content="Molla">
     <meta name="msapplication-TileColor" content="#cc9966">
@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="/user_profile/assets/css/bootstrap.min.css">
     <!-- Main CSS File -->
     <link rel="stylesheet" href="/user_profile/assets/css/style.css">
-    <link rel="shortcut icon" href="/user_profile/aassets/images/favicon.png" />
+
     <!-- Plugins CSS -->
     <link rel="stylesheet" href="/user_profile/aassets/css/plugins.css">
     <!-- Bootstap CSS -->
@@ -122,9 +122,9 @@
                 </div>
                 <div class="col-6 col-sm-6 col-md-6 col-lg-2 d-block d-lg-none mobile-logo">
                     <div class="logo">
-                        <a href="index.html">
-                            <img src="user_profile/aassets/images/logo.svg" alt="Belle Multipurpose Html Template"
-                                title="Belle Multipurpose Html Template" />
+                        <a href="/">
+                            <img src="/logoAndFevicon/originalLogo.png" alt="wastra online shopping"
+                                title="wastra online shopping" />
                         </a>
                     </div>
                 </div>
@@ -135,7 +135,7 @@
                             <span id="CartCount" class="site-header__cart-count" data-cart-render="item_count">2</span>
                         </a>
                         <!--Minicart Popup-->
-                        
+
                         <!--End Minicart Popup-->
                     </div>
                     <div class="site-header__search">
@@ -147,20 +147,24 @@
     </div>
     <!-- start of mobile menu -->
     <div class="mobile-nav-wrapper" role="navigation">
-            <div class="closemobileMenu"><i class="icon anm anm-times-l pull-right"></i> Wastra Menu</div>
-            <ul id="MobileNav" class="mobile-nav">
-                {{#if user}}
-                <li class="lvl1 parent megamenu"><a href="/logout"><i class="fas fa-sign-in-alt fa-rotate-180"></i> Logout</a></li>
-                <li class="lvl1 parent megamenu"><a href="/user_profile"><i class="fa fa-user" aria-hidden="true"></i> profile </a>
-                <li class="lvl1 parent megamenu"><a href="/wishlist"><i class="fas fa-heart"></i> Wish List </a>
-                <li class="lvl1 parent megamenu"><a href="/cart?id={{userData._id}}"><i class="fas fa-shopping-cart"></i> Cart </a>
-                <li class="lvl1 parent megamenu"><a href=""> <i class=" fas fa-thin fa-wallet"></i> wallet : {{userData.wallet}} </a>
+        <div class="closemobileMenu"><i class="icon anm anm-times-l pull-right"></i> Wastra Menu</div>
+        <ul id="MobileNav" class="mobile-nav">
+            {{#if user}}
+            <li class="lvl1 parent megamenu"><a href="/logout"><i class="fas fa-sign-in-alt fa-rotate-180"></i>
+                    Logout</a></li>
+            <li class="lvl1 parent megamenu"><a href="/user_profile"><i class="fa fa-user" aria-hidden="true"></i>
+                    profile </a>
+            <li class="lvl1 parent megamenu"><a href="/wishlist"><i class="fas fa-heart"></i> Wish List </a>
+            <li class="lvl1 parent megamenu"><a href="/cart?id={{userData._id}}"><i class="fas fa-shopping-cart"></i>
+                    Cart </a>
+            <li class="lvl1 parent megamenu"><a href=""> <i class=" fas fa-thin fa-wallet"></i> wallet :
+                    {{userData.wallet}} </a>
                 {{else}}
-                <li class="lvl1 parent megamenu"><a href="/login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-                {{/if}}
-                
-            </ul>
-        </div>
+            <li class="lvl1 parent megamenu"><a href="/login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+            {{/if}}
+
+        </ul>
+    </div>
 
     <!-- end of  mobile menu -->
 
