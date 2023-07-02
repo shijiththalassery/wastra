@@ -1,39 +1,53 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
-<!-- belle/404.html   11 Nov 2019 12:45:12 GMT -->
+<!-- belle/blog-fullwidth.html   11 Nov 2019 12:46:09 GMT -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>404 Page Not Found &ndash; Belle Multipurpose Bootstrap 4 Template</title>
+<title>Blog Fullwidth &ndash; Belle Multipurpose Bootstrap 4 Template</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon -->
-<link rel="shortcut icon" href="/home/assets/images/favicon.png" />
-<!-- Plugins CSS -->
-<link rel="stylesheet" href="/home/assets/css/plugins.css">
-<!-- Bootstap CSS -->
-<link rel="stylesheet" href="/home/assets/css/bootstrap.min.css">
-<!-- Main Style CSS -->
-<link rel="stylesheet" href="/home/assets/css/style.css">
-<link rel="stylesheet" href="/home/assets/css/responsive.css">
+    <link rel="shortcut icon" href="user_product_view/assets/images/favicon.png" />
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="user_product_view/assets/css/plugins.css">
+    <!-- Bootstap CSS -->
+    <link rel="stylesheet" href="user_product_view/assets/css/bootstrap.min.css">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="user_product_view/assets/css/style.css">
+    <link rel="stylesheet" href="user_product_view/assets/css/responsive.css">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" rel="stylesheet">
 </head>
-<body class="page-template lookbook-template error-page belle">
+<body class="template-blog belle">
 <div class="pageWrapper">
 	<!--Search Form Drawer-->
 	<div class="search">
-        
+        <div class="search__form">
+            <form class="search-bar__form" action="#">
+                <button class="go-btn search__button" type="submit"><i class="icon anm anm-search-l"></i></button>
+                <input class="search__input" type="search" name="q" value="" placeholder="Search entire store..." aria-label="Search" autocomplete="off">
+            </form>
+            <button type="button" class="search-trigger close-btn"><i class="icon anm anm-times-l"></i></button>
+        </div>
     </div>
     <!--End Search Form Drawer-->
- 
+   
     <!--Header-->
     <div class="header-wrap animated d-flex">
     	<div class="container-fluid">        
             <div class="row align-items-center">
             	<!--Desktop Logo-->
                 <div class="logo col-md-2 col-lg-2 d-none d-lg-block">
-                    <a href="index.html">
-                    	<img src="/home/assets/images/logo.svg" alt="Belle Multipurpose Html Template" title="Belle Multipurpose Html Template" />
+                    <a href="/">
+                    	<img src="/home/assets/images/logos.png" alt="wastra online shopping" title="wastra online shopping" />
                     </a>
                 </div>
                 <!--End Desktop Logo-->
@@ -45,60 +59,106 @@
                         </button>
                     </div>
                 	<!--Desktop Menu-->
-                	{{!-- <nav class="grid__item" id="AccessibleNav"><!-- for mobile -->
+                	<nav class="grid__item" id="AccessibleNav"><!-- for mobile -->
                         <ul id="siteNav" class="site-nav medium center hidearrow">
-                            <li class="lvl1 parent megamenu"><a href="#">Home <i class="anm anm-angle-down-l"></i></a></li>
-                            <li class="lvl1 parent megamenu"><a href="#">Shop <i class="anm anm-angle-down-l"></i></a></li>
-                        <li class="lvl1 parent megamenu"><a href="#">Contact <i class="anm anm-angle-down-l"></i></a></li>
-                        <li class="lvl1 parent dropdown"><a href="#">account <i class="anm anm-angle-down-l"></i></a></li>
+                            <li class="lvl1 parent megamenu"><a href="#">Home <i class="anm anm-angle-down-l"></i></a>
+                                
+                            </li>
+                            <li class="lvl1 parent megamenu"><a href="/shop_all_product">Shop <i
+                                class="anm anm-angle-down-l"></i></a>
+
+                    </li>
+                    <li class="lvl1 parent megamenu"><a href="#">Contact Us<iclass="anm anm-angle-down-l">
+                                </i></a> </li>
+                    <li class="lvl1 parent dropdown"><a href="#"><i class="far fa-user-circle"></i> Account
+                        </a>
+                        <ul class="dropdown">
+                            {{#if user}}
+                            <li>
+                                <a href="/logout" class="site-nav">
+                                    <i class="fas fa-sign-in-alt fa-rotate-180"></i>
+                                    Log out
+                                </a>
+                            </li>
+                            {{else}}
+                            <li><a href="/login" class="site-nav"><i
+                                        class="fas fa-sign-in-alt"></i> Log in</a>
+                            </li>
+                            {{/if}}
+                           
+
+                    </li>
+                    <li><a href="/user_profile" class="site-nav"><i class="fa fa-user"
+                                aria-hidden="true"></i>&nbsp;Profile</a></li>
+                    <li><a href="/cart?id={{userData._id}}" class="site-nav"><i class="fas fa-shopping-cart"></i>
+                            Cart</a>
+                    </li>
+                    <li><a href="/wishlist" class="site-nav"><i class="fas fa-heart"></i>
+                            Wishlists</a></li>
                       </ul>
-                    </nav> --}}
+                    </nav>
                     <!--End Desktop Menu-->
                 </div>
                 <div class="col-6 col-sm-6 col-md-6 col-lg-2 d-block d-lg-none mobile-logo">
                 	<div class="logo">
-                        <a href="index.html">
-                            <img src="/home/assets/images/logo.svg" alt="Belle Multipurpose Html Template" title="Belle Multipurpose Html Template" />
+                        <a href="/">
+                            <img src="/home/assets/images/logos.png" alt="wastra online shopping" title="wastra online shopping" />
                         </a>
                     </div>
                 </div>
-
+                
         	</div>
         </div>
     </div>
     <!--End Header-->
     <!--Mobile Menu-->
     <div class="mobile-nav-wrapper" role="navigation">
-		<div class="closemobileMenu"><i class="icon anm anm-times-l pull-right"></i> Close Menu</div>
-        {{!-- <ul id="MobileNav" class="mobile-nav">
-        	<li class="lvl1 parent megamenu"><a href="index.html">Home <i class="anm anm-plus-l"></i></a></li>
-        	<li class="lvl1 parent megamenu"><a href="#">Shop <i class="anm anm-plus-l"></i></a></li>
-        	<li class="lvl1 parent megamenu"><a href="product-layout-1.html">Product <i class="anm anm-plus-l"></i></a></li>
-        	<li class="lvl1 parent megamenu"><a href="about-us.html">Pages <i class="anm anm-plus-l"></i></a></li>
-      </ul> --}}
-	</div>
+            <div class="closemobileMenu"><i class="icon anm anm-times-l pull-right"></i> Wastra Menu</div>
+            <ul id="MobileNav" class="mobile-nav">
+                {{#if user}}
+                <li class="lvl1 parent megamenu"><a href="/logout"><i class="fas fa-sign-in-alt fa-rotate-180"></i> Logout</a></li>
+                <li class="lvl1 parent megamenu"><a href="/user_profile"><i class="fa fa-user" aria-hidden="true"></i> profile </a>
+                <li class="lvl1 parent megamenu"><a href="/wishlist"><i class="fas fa-heart"></i> Wish List </a>
+                <li class="lvl1 parent megamenu"><a href="/cart?id={{userData._id}}"><i class="fas fa-shopping-cart"></i> Cart </a>
+                <li class="lvl1 parent megamenu"><a href=""> <i class=" fas fa-thin fa-wallet"></i> wallet : {{userData.wallet}} </a>
+                {{else}}
+                <li class="lvl1 parent megamenu"><a href="/login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                {{/if}}
+                
+            </ul>
+        </div>
 	<!--End Mobile Menu-->
     
     <!--Body Content-->
-    <div id="page-content">        
-        <!-- Lookbook Start -->
+    <div id="page-content">
+    	<!--Page Title-->
+    	<div class="page section-header text-center mb-0">
+			<div class="page-title">
+        		<div class="wrapper"><h1 class="page-width">Empty WishList</h1></div>
+      		</div>
+		</div>
+        <!--End Page Title-->
+	   
         <div class="container">
         	<div class="row">
-            	<div class="col-12 col-sm-12 col-md-12 col-lg-12">	
-        			<div class="empty-page-content text-center">
-                        <h1>404 Page Not Found</h1>
-                        <p>The page you requested does not exist.</p>
-                        <p><a href="/shop_all_product" class="btn btn--has-icon-after">Continue shopping <i class="fa fa-caret-right" aria-hidden="true"></i></a></p>
-                      </div>
-        		</div>
-        	</div>
+                <!--Main Content-->
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
+                    <div class="blog--list-view blog--grid-load-more">  
+                        <div class="article"> 
+                            <!-- Article Image --> 
+                             <a class="article_featured-image" href="#"><img class="blur-up lazyload" data-src="user_product_view/assets/images/blog/empty-cart.svg" src="assets/images/blog/blog-post-4.jpg" alt="Accusantium doloremque" style="    height: 472px;"></a> 
+                        </div>
+                    </div>
+                </div>
+                <!--End Main Content-->
+            </div>
         </div>
-        <!-- Lookbook Start -->
+        
     </div>
     <!--End Body Content-->
     
     <!--Footer-->
-    {{!-- <footer id="footer">
+    <footer id="footer">
         <div class="newsletter-section">
             <div class="container">
                 <div class="row">
@@ -121,15 +181,7 @@
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-5 d-flex justify-content-end align-items-center">
                             <div class="footer-social">
-                                <ul class="list--inline site-footer__social-icons social-icons">
-                                    <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Facebook"><i class="icon icon-facebook"></i></a></li>
-                                    <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Twitter"><i class="icon icon-twitter"></i> <span class="icon__fallback-text">Twitter</span></a></li>
-                                    <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Pinterest"><i class="icon icon-pinterest"></i> <span class="icon__fallback-text">Pinterest</span></a></li>
-                                    <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Instagram"><i class="icon icon-instagram"></i> <span class="icon__fallback-text">Instagram</span></a></li>
-                                    <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Tumblr"><i class="icon icon-tumblr-alt"></i> <span class="icon__fallback-text">Tumblr</span></a></li>
-                                    <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on YouTube"><i class="icon icon-youtube"></i> <span class="icon__fallback-text">YouTube</span></a></li>
-                                    <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Vimeo"><i class="icon icon-vimeo-alt"></i> <span class="icon__fallback-text">Vimeo</span></a></li>
-                                </ul>
+                               
                             </div>
                         </div>
                     </div>
@@ -203,26 +255,34 @@
                 </div>
             </div>
         </div>
-    </footer> --}}
+    </footer>
     <!--End Footer-->
     <!--Scoll Top-->
     <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
     <!--End Scoll Top-->
     
      <!-- Including Jquery -->
-     <script src="/home/assets/js/vendor/jquery-3.3.1.min.js"></script>
-     <script src="/home/assets/js/vendor/jquery.cookie.js"></script>
-     <script src="/home/assets/js/vendor/modernizr-3.6.0.min.js"></script>
-     <script src="/home/assets/js/vendor/wow.min.js"></script>
-     <script src="/home/assets/js/vendor/masonry.js" type="text/javascript"></script>
-     <!-- Including Javascript -->
-     <script src="/home/assets/js/bootstrap.min.js"></script>
-     <script src="/home/assets/js/plugins.js"></script>
-     <script src="/home/assets/js/popper.min.js"></script>
-     <script src="/home/assets/js/lazysizes.js"></script>
-     <script src="/home/assets/js/main.js"></script>
+         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="user_allProducts/assets/js/vendor/jquery-3.3.1.min.js"></script>
+    <script src="user_allProducts/assets/js/vendor/jquery.cookie.js"></script>
+    <script src="user_allProducts/assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="user_allProducts/assets/js/vendor/wow.min.js"></script>
+    <!-- Including Javascript -->
+    <script src="user_allProducts/assets/js/bootstrap.min.js"></script>
+    <script src="user_allProducts/assets/js/plugins.js"></script>
+    <script src="user_allProducts/assets/js/popper.min.js"></script>
+    <script src="user_allProducts/assets/js/lazysizes.js"></script>
+    <script src="user_allProducts/assets/js/main.js"></script>
 </div>
 </body>
 
-<!-- belle/404.html   11 Nov 2019 12:45:12 GMT -->
+<!-- belle/blog-fullwidth.html   11 Nov 2019 12:46:09 GMT -->
 </html>

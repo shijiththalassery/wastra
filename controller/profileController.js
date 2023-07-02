@@ -7,14 +7,22 @@ const Order = require('../model/orderModel')
 const loadProfilePage = async (req, res) => {
 
     try {
-        const orderDetail = await Order.aggregate([
-            {
-                $unwind: "$product"
-            }
-        ]).sort({ _id: -1 });
-
         const userData = req.session.cartUser;
         const userId = userData._id;
+        const orderDetail = await Order.aggregate([
+            {
+              $match: {
+                 userId: userId 
+              }
+            },
+            {
+              $unwind: "$product"
+            },
+            {
+              $sort: { _id: -1 }
+            }
+          ]);
+
         const categoryData = await Category.find({ is_blocked: false });
         const addressData = await Address.find({ userId: userId });
         const orderData = await Order.find({ userId: userId }).sort({ _id: -1 });

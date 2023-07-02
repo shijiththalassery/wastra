@@ -101,7 +101,6 @@ app.use('/', userRoute)
 ///////for admin router////////
 
 app.use(async function(req,res,next){
-   const userData = req.session.cartUser;
   res.render('../view/users/404');
 })
 

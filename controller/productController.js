@@ -455,7 +455,7 @@ const loadCartPage = async (req, res) => {
         });
 
         if (user.cart.length === 0) {
-            res.render("cart", { userData, categoryData, message: 'empty cart' });
+            res.render("emptyCart", { userData, categoryData, message: 'empty cart' });
         } else {
             res.render("cart", { userData, categoryData, cart, subTotal, });
         }
