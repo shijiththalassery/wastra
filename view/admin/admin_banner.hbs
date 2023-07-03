@@ -139,7 +139,7 @@
                                             <th scope="col">NO</th>
                                             <th scope="col">TITLE</th>
                                             <th scope="col">IMAGE</th>
-                                            <th scope="col">ACTION</th>
+                                            {{!-- <th scope="col">ACTION</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -149,14 +149,14 @@
                                             <td data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{this.title}}" class="bannerTitle">{{this.title}}</td>
                                             <td><img style="width: 40px; height: 40px;" src="{{this.imageUrl.url}}"
                                                     style="border-radius: 30px;"> </td>
-                                            <td><button style="width: 103px;
+                                            {{!-- <td><button style="width: 103px;
                                                                border: none;
                                                                height: 29px;
                                                                background-color: #009cff;
                                                                font-size:small;
                                                                border-radius:20px;"><a
                                                         href="/admin/delete_banner?id={{this._doc._id}}">delete</a></button>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                         {{/each}}
 

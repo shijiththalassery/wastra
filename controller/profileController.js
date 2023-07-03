@@ -31,8 +31,8 @@ const loadProfilePage = async (req, res) => {
         const categoryData = await Category.find({ is_blocked: false });
         const addressData = await Address.find({ userId: userId });
         const orderData = await Order.find({ userId: userId }).sort({ _id: -1 });
-
-        res.render("userProfile", { userData, categoryData, addressData, orderDetail, orderData});
+          console.log(orderData[0].product,'this is order data')
+        res.render("userProfile", { userData, categoryData, addressData, orderDetail, orderData, image:orderData[0].product});
     } catch (error) {
         console.log(error.message);
     }

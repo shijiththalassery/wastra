@@ -348,7 +348,7 @@ const oderDetailsPage = async (req, res) => {
     try {
         const orderId = req.query.id;
         const oderDetail = await Order.findById(orderId)
-
+        console.log(oderDetail,'this is complete order detail')
         res.render('singleOrderDetail', { oderDetail })
     } catch (error) {
         console.log(error.message)
