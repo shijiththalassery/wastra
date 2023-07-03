@@ -32,7 +32,7 @@ const loadProfilePage = async (req, res) => {
         const addressData = await Address.find({ userId: userId });
         const orderData = await Order.find({ userId: userId }).sort({ _id: -1 });
 
-        res.render("userProfile", { userData, categoryData, addressData, orderDetail });
+        res.render("userProfile", { userData, categoryData, addressData, orderDetail, orderData});
     } catch (error) {
         console.log(error.message);
     }
