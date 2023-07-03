@@ -115,6 +115,7 @@
                                         Wishlists</a></li>
                             </ul>
                             </li>
+                            {{#if userData}}
                             <li class="lvl1 parent dropdown"><a href="#"><i class=" fas fa-thin fa-wallet"></i> Wallet
                                     balance
                                 </a>
@@ -127,6 +128,7 @@
                                 </ul>
 
                             </li>
+                            {{/if}}
                             </ul>
                         </nav>
                         <!--End Desktop Menu-->
@@ -156,15 +158,19 @@
             <div class="closemobileMenu"><i class="icon anm anm-times-l pull-right"></i> Wastra Menu</div>
             <ul id="MobileNav" class="mobile-nav">
                 {{#if user}}
-                <li class="lvl1 parent megamenu"><a href="/logout"><i class="fas fa-sign-in-alt fa-rotate-180"></i> Logout</a></li>
-                <li class="lvl1 parent megamenu"><a href="/user_profile"><i class="fa fa-user" aria-hidden="true"></i> profile </a>
+                <li class="lvl1 parent megamenu"><a href="/logout"><i class="fas fa-sign-in-alt fa-rotate-180"></i>
+                        Logout</a></li>
+                <li class="lvl1 parent megamenu"><a href="/user_profile"><i class="fa fa-user" aria-hidden="true"></i>
+                        profile </a>
                 <li class="lvl1 parent megamenu"><a href="/wishlist"><i class="fas fa-heart"></i> Wish List </a>
-                <li class="lvl1 parent megamenu"><a href="/cart?id={{userData._id}}"><i class="fas fa-shopping-cart"></i> Cart </a>
-                <li class="lvl1 parent megamenu"><a href=""> <i class=" fas fa-thin fa-wallet"></i> wallet : {{userData.wallet}} </a>
-                {{else}}
+                <li class="lvl1 parent megamenu"><a href="/cart?id={{userData._id}}"><i
+                            class="fas fa-shopping-cart"></i> Cart </a>
+                <li class="lvl1 parent megamenu"><a href=""> <i class=" fas fa-thin fa-wallet"></i> wallet :
+                        {{userData.wallet}} </a>
+                    {{else}}
                 <li class="lvl1 parent megamenu"><a href="/login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
                 {{/if}}
-                
+
             </ul>
         </div>
         <!--End Mobile Menu-->

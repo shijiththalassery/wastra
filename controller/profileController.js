@@ -3,31 +3,35 @@ const Category = require("../model/catagoryModel");
 const Product = require("../model/productModel");
 const Address = require('../model/adressModel')
 const Order = require('../model/orderModel')
+const { ObjectId } = require('mongodb');
 
 const loadProfilePage = async (req, res) => {
 
     try {
         const userData = req.session.cartUser;
         const userId = userData._id;
+        const userID = new ObjectId(userId);
         const orderDetail = await Order.aggregate([
             {
               $match: {
-                 userId: userId 
+                userId: userID
               }
             },
             {
               $unwind: "$product"
             },
             {
-              $sort: { _id: -1 }
+              $sort: {
+                _id: -1
+              }
             }
           ]);
-
+          
+          
         const categoryData = await Category.find({ is_blocked: false });
         const addressData = await Address.find({ userId: userId });
         const orderData = await Order.find({ userId: userId }).sort({ _id: -1 });
 
-        console.log(orderDetail,'this is order detaol')
         res.render("userProfile", { userData, categoryData, addressData, orderDetail });
     } catch (error) {
         console.log(error.message);

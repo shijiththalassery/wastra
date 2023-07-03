@@ -396,10 +396,10 @@
                                     text.</p>
                                 <p style="display: none;" id="returnDate"
                                     data-value="{{formatDate orderDetails.returnDate}}">This is some text.</p>
-                                <h5
-                                    class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">
+                                <h5 
+                                    class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0" >
                                     Total
-                                    paid: <span class="h2 mb-0 ms-2">₹{{orderDetails.totalAmount}} </span></h5>
+                                    paid: <span style="color: #a8729a;" class="h2 mb-0 ms-2">₹{{orderDetails.totalAmount}} </span></h5>
                                 {{#if (eq orderDetails.status 'Delivered')}}
                                 <a class="btn btn-primary" href="/downloadInvoice?orderId={{orderDetails._id}}">
                                     <i class="fas fa-download"></i> Download Invoice
